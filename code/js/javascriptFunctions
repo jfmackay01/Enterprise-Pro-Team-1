@@ -21,15 +21,12 @@ function validateRegisterForm() {
     }
 
     if (email == "") {
-        alert(0)
         errors.push("Email must be filled out");
     }//browser shoulld validate email address but just in case make sure has @ symbol
     else if (email.search('@') == -1) {
-        alert("1")
         errors.push("Invalid Email") 
     }
     else{
-        alert("2")
     }
 
 
@@ -47,7 +44,6 @@ function validateRegisterForm() {
         return true;
     }
 }
-
 
 
 
