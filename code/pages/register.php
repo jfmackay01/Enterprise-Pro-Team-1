@@ -29,7 +29,7 @@ session_start();
         <br />
     
         <!-- Registration form form -->
-        <!--
+        
         <div align="center">
             <form class="input" name="register" onsubmit="return validateRegisterForm()" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <fieldset style="width:350px" align="right">
@@ -55,7 +55,7 @@ session_start();
                 </fieldset>
             </form>
         </div>
-        -->
+        
         <!--Run registering.php file when form is submitted-->
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {

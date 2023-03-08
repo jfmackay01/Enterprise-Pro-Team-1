@@ -27,7 +27,7 @@ session_start();
         <br />
         <!-- Login form -->
         
-        <!--
+        <!---->
         <div  class = "content" align = "center">
         <form class = "input" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <fieldset style="width:350px" align="center">
@@ -49,18 +49,19 @@ session_start();
 
             <!--Run conductLogin.php file when form is submitted otherwise prompt user to enter details-->
             
-                <?php
+               <!--- <?php
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         require '../php/conductLogin.php';
                     } else {
                         echo "Input details to log on";
                     }
-                    ?>;
+                    ?>; 
+                
                
     <!--        
         </div>
     -->
-    
+
 
     <!-- Login form -->
 <section class="container2">
@@ -72,6 +73,8 @@ session_start();
    <input type="submit" class="btn" name="submit" value="log in">
    
 </form>
+
+    
 
 </section>
 </body>
