@@ -1,5 +1,4 @@
 <a href='../pages/home.php'>Home</a>
-<a href='../pages/adminhome.php'>Admin</a>
  
 <link rel="stylesheet" type="text/css" href="../css/standard.css">
 <meta charset="UTF-8" />
@@ -15,15 +14,10 @@ if (!isset($_SESSION["logon"])) {//if not logged on show login and register butt
         <a href='../pages/login.php' style ='float: right' >Log in</a>
         <a href='../pages/register.php' style ='float: right' >Sign up</a>
     ");
-} else {//otherwise show basket and logoff button
+} else {//otherwise show logoff button
     echo ("
         <a href='../php/logoff.php' style ='float: right' > Log off</a>
         ");
-    if ($_SESSION["admin"] == true) {//if admin show admin links
-        echo ("
-        <a href='../php/home.php'>Home2</a>
-            ");
-    }
 }
 ?>
 
