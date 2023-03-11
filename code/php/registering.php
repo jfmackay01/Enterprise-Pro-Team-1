@@ -58,7 +58,7 @@ if (isset($_POST)) {
     $query = "INSERT INTO users (password, email) VALUES('$password','$email')";
     if (mysqli_query($conn, $query)) {
       $conn->close();
-      header('location: ../pages/login.php'); //once registered go to logon page
+      echo "You have signed up!";
     } else {
       echo ("Error inserting data");
       echo(nl2br("\n") . $conn->error);
@@ -66,11 +66,12 @@ if (isset($_POST)) {
   } else { //if errors found print errors
     foreach ($errors as $error) {
       echo  nl2br("\n") . $error;
+      exit();
     }
   }
 } else { //if not from form submission via POST method
   echo ("error receving files from form");
 }
-$conn->close(); //close connection to database
+exit(); //close connection to database
 
 ?>
