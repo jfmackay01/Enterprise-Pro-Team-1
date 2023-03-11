@@ -119,3 +119,46 @@ body{
    border-radius: 1.5rem;
 }
 
+/*reviewers/collaborators page*/
+
+.container4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: var(--gray4);
+  box-shadow: 0 2px 5px var(--gray1);
+}
+
+.container4 .back-btn {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.container4 h2 {
+  font-size: 30px;
+  font-weight: normal;
+  margin: 0;
+  margin: 0;
+	flex: 1;
+	text-align: center;
+}
+
+.container4 .filter-select {
+  padding: 10px;
+  background-color: var(--gray1);
+  border: 1px solid var(--black2);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--black1);
+}
+
+.filter-select:hover {
+  background-color: var(--black7);
+  color: var(--gray4);
+}
+
