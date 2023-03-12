@@ -54,7 +54,7 @@
                   </div>
                   <img src="https://i.imgur.com/XN4tpER.png">
                   <div class="clickhere">
-                     <a href="#collaborator">
+                     <a href="collab.php">
                         <h3>Click Here</h3>
                      </a>
                   </div>
@@ -67,7 +67,7 @@
                   </div>
                   <img src="https://i.imgur.com/jQKhmPH.png">
                   <div class="clickhere">
-                     <a href="#review">
+                     <a href="rev.php">
                         <h3>Click Here</h3>
                      </a>
                   </div>
