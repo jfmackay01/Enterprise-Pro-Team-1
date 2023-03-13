@@ -62,7 +62,6 @@
       }
    ?>
 
-
             <div class="col-lg-6">
                <div class="p-3 border bg-light">
                   <div class="col">
@@ -76,7 +75,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                <div class="p-3 border bg-light">
                   <div class="Reviewers">
                      <h2> Impact Records </h2>
@@ -89,7 +88,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                <div class="p-3 border bg-light">
                   <div class="col">
                      <h2> Collaborators </h2>
@@ -104,7 +103,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                <div class="p-3 border bg-light">
                   <div class="Reviewers">
                      <h2> Reviewers </h2>
