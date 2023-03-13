@@ -96,7 +96,9 @@
                   </div>
                   <img src="https://i.imgur.com/XN4tpER.png">
                   <div class="clickhere">
-                     <a href="#Collaborators">
+
+                     <a href="collab.php">
+
                         <h3>Click Here</h3>
                      </a>
                   </div>
@@ -109,7 +111,9 @@
                   </div>
                   <img src="https://i.imgur.com/USd6B2v.png">
                   <div class="clickhere">
-                     <a href="#Reviewers">
+
+                     <a href="rev.php">
+
                         <h3>Click Here</h3>
                      </a>
                   </div>

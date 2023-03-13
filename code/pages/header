@@ -1,6 +1,4 @@
-<a href='../pages/home.php'>Home</a>
-<a href='../pages/adminhome.php'>Admin</a>
- 
+
 <link rel="stylesheet" type="text/css" href="../css/standard.css">
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
