@@ -30,15 +30,15 @@
             </div>
             <div class="col-md-4">
                <div class="profile">
-                  <a href="#profile"> <img src="https://i.imgur.com/GjOSq45.png"></a>
+                  <a href="#profile"> <img src="https://i.imgur.com/S8Zjwpq.png"></a>
                   <?php
                      if (!isset($_SESSION["logon"])) {//if not logged on show login and register button
                         echo ("
-                           <a href='../pages/login.php' class='btn' style ='float: right' > Login
+                           <a href='../pages/login.php' class='loggedin' style ='float: right' > Login
                         ");
                         } else {//otherwise show profile and logoff button
                            echo ("
-                              <a href='../php/logoff.php' class='btn' style ='float: right' > Log off
+                              <a href='../php/logoff.php' class='loggedout' style ='float: right' > Log off
                            ");
                            if ($_SESSION["admin"] == true) {//if admin show admin links
                               echo ("
