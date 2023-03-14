@@ -29,8 +29,7 @@
             if (isset($_SESSION["logon"])) {
                if ($_SESSION["admin"] == true) {//if admin show admin links
                   echo("
-
-            <div class='col-lg-4'>
+            <div class='col-lg-6'>
                <div class='p-3 border bg-light'>
                   <div class='res'>
                      <h2> Dashboard </h2>
@@ -43,7 +42,7 @@
                   </div>
                </div>
             </div>
-            <div class='col-lg-4'>
+            <div class='col-lg-6'>
                <div class='p-3 border bg-light'>
                   <div class='imp'>
                      <h2> Master Spreadsheet </h2>
@@ -56,7 +55,6 @@
                   </div>
                </div>
             </div>
-
             ");
          }
       }
@@ -75,7 +73,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                <div class="p-3 border bg-light">
                   <div class="Reviewers">
                      <h2> Impact Records </h2>
@@ -88,7 +86,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                <div class="p-3 border bg-light">
                   <div class="col">
                      <h2> Collaborators </h2>
@@ -103,7 +101,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                <div class="p-3 border bg-light">
                   <div class="Reviewers">
                      <h2> Reviewers </h2>
