@@ -29,7 +29,6 @@
             if (isset($_SESSION["logon"])) {
                if ($_SESSION["admin"] == true) {//if admin show admin links
                   echo("
-
             <div class='col-lg-4'>
                <div class='p-3 border bg-light'>
                   <div class='res'>
@@ -56,7 +55,6 @@
                   </div>
                </div>
             </div>
-
             ");
          }
       }
