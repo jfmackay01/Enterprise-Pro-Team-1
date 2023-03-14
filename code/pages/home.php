@@ -62,8 +62,7 @@
       }
    ?>
 
-
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                <div class="p-3 border bg-light">
                   <div class="col">
                      <h2> Research Project Records </h2>
