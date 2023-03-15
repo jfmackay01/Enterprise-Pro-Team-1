@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2023 at 02:49 PM
+-- Generation Time: Mar 14, 2023 at 07:24 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -21,6 +21,9 @@ USE `impactevidenceplatform`;
 
 --
 -- Table structure for table `departments`
+--
+-- Creation: Mar 07, 2023 at 11:23 AM
+-- Last update: Mar 14, 2023 at 01:18 PM
 --
 
 DROP TABLE IF EXISTS `departments`;
@@ -44,6 +47,8 @@ INSERT INTO `departments` (`departmentID`, `departmentName`) VALUES
 --
 -- Table structure for table `impact_files`
 --
+-- Creation: Mar 14, 2023 at 11:40 AM
+--
 
 DROP TABLE IF EXISTS `impact_files`;
 CREATE TABLE `impact_files` (
@@ -56,6 +61,8 @@ CREATE TABLE `impact_files` (
 
 --
 -- Table structure for table `impact_record`
+--
+-- Creation: Mar 14, 2023 at 11:38 AM
 --
 
 DROP TABLE IF EXISTS `impact_record`;
@@ -77,6 +84,8 @@ INSERT INTO `impact_record` (`impactID`, `impactActivity`, `ImpactEvidence`, `re
 
 --
 -- Table structure for table `progress`
+--
+-- Creation: Mar 14, 2023 at 11:17 AM
 --
 
 DROP TABLE IF EXISTS `progress`;
@@ -102,6 +111,8 @@ INSERT INTO `progress` (`progressID`, `progressStage`) VALUES
 --
 -- Table structure for table `project_allocations`
 --
+-- Creation: Mar 14, 2023 at 01:33 PM
+--
 
 DROP TABLE IF EXISTS `project_allocations`;
 CREATE TABLE `project_allocations` (
@@ -122,6 +133,8 @@ INSERT INTO `project_allocations` (`userID`, `projectID`, `role`) VALUES
 --
 -- Table structure for table `research_files`
 --
+-- Creation: Mar 14, 2023 at 11:32 AM
+--
 
 DROP TABLE IF EXISTS `research_files`;
 CREATE TABLE `research_files` (
@@ -134,6 +147,9 @@ CREATE TABLE `research_files` (
 
 --
 -- Table structure for table `research_grant`
+--
+-- Creation: Mar 14, 2023 at 01:35 PM
+-- Last update: Mar 14, 2023 at 01:22 PM
 --
 
 DROP TABLE IF EXISTS `research_grant`;
@@ -156,6 +172,9 @@ INSERT INTO `research_grant` (`grantID`, `amount`, `dateGiven`, `givenBy`) VALUE
 --
 -- Table structure for table `research_project`
 --
+-- Creation: Mar 14, 2023 at 06:19 PM
+-- Last update: Mar 14, 2023 at 06:19 PM
+--
 
 DROP TABLE IF EXISTS `research_project`;
 CREATE TABLE `research_project` (
@@ -164,6 +183,7 @@ CREATE TABLE `research_project` (
   `departmentID` tinyint(7) NOT NULL,
   `projectInvestigator` varchar(64) NOT NULL,
   `grantID` int(11) DEFAULT NULL,
+  `researchOutput` varchar(64) DEFAULT NULL COMMENT 'Summary of the output of the paper',
   `projectSummary` varchar(64) DEFAULT NULL COMMENT 'Summary of project',
   `potentialUOA` tinyint(4) NOT NULL DEFAULT 36 COMMENT 'Foreign key of UOA',
   `impactProgress` tinyint(4) NOT NULL DEFAULT 6 COMMENT 'FK of progress state',
@@ -172,6 +192,7 @@ CREATE TABLE `research_project` (
   `followup` varchar(64) DEFAULT NULL,
   `underpinnedResearch` varchar(64) DEFAULT NULL,
   `reach` varchar(64) DEFAULT NULL,
+  `significance` varchar(32) DEFAULT NULL,
   `quality` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -179,13 +200,16 @@ CREATE TABLE `research_project` (
 -- Dumping data for table `research_project`
 --
 
-INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `projectInvestigator`, `grantID`, `projectSummary`, `potentialUOA`, `impactProgress`, `notes`, `meetings`, `followup`, `underpinnedResearch`, `reach`, `quality`) VALUES
-(1, 'Test Project', 1, 'Bob Bobson', 1, 'A test Project', 0, 4, 'test', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `projectInvestigator`, `grantID`, `researchOutput`, `projectSummary`, `potentialUOA`, `impactProgress`, `notes`, `meetings`, `followup`, `underpinnedResearch`, `reach`, `significance`, `quality`) VALUES
+(1, 'Test Project', 1, 'Bob Bobson', 1, NULL, 'A test Project', 0, 4, 'test', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `uoa`
+--
+-- Creation: Mar 14, 2023 at 11:09 AM
+-- Last update: Mar 14, 2023 at 01:17 PM
 --
 
 DROP TABLE IF EXISTS `uoa`;
@@ -240,6 +264,8 @@ INSERT INTO `uoa` (`uoaID`, `uoaTitle`) VALUES
 
 --
 -- Table structure for table `users`
+--
+-- Creation: Mar 14, 2023 at 01:33 PM
 --
 
 DROP TABLE IF EXISTS `users`;
