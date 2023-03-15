@@ -1,0 +1,284 @@
+:root{
+
+  /*---- Colours used-----*/
+  --black1:#090909;
+  --black2:#121212;
+  --black3:#1c1c1c;
+  --black4:#262626;
+  --black5:#303030;
+  --black6:#3a3a3a;
+  --black7:#434343;
+
+  --gray1:#cecece;
+  --gray2:#dbdbdb;
+  --gray3:#e7e7e7;
+  --gray4:#f4f4f4;
+
+  --blue1:#0066cc;
+
+  --border:.4rem solid --gray1;
+}
+/*------General page style-----*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+body{
+  background: white;
+}
+.box {
+  text-align: center;
+	width: 100%;
+	display: block;
+  margin-top: 15px;
+}
+.text {
+  text-align: left;
+  font-size: 26px;
+  color: white;
+  margin-top: 5px;
+}
+.profile {
+  text-align: right;
+  margin-top: 5px;
+}
+.container-fluid {
+  background-color: #161616;
+}
+.container {
+  position:relative
+}
+.welcome {
+  text-align: center;
+  padding-top: 70px;
+}
+.clickhere {
+  text-align: right;
+	color:#124d77;
+  text-decoration: none;
+}
+.sidebar {
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+.sidebar a {
+  display: block;
+  padding: 16px;
+}
+
+/*-----Back Button------*/
+.back-btn:hover{
+   color: var(--gray1);
+   background-color: var(--gray3) ;
+}
+.back-btn{
+  cursor: pointer;
+  font-size:18px;
+  font-weight:bold;
+  background:var(--gray3);
+  width:60px;
+  padding:10px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--black3);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(146, 141, 141, 0.847);
+  -webkit-transition-duration:0.3s;
+  transition-duration:0.3s;
+  -webkit-transition-property:box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.back-btn:hover, .back-btn:focus, .back-btn:active{
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+/*-----Submit Button------*/
+.submit-btn:hover{
+  color: var(--gray1);
+  background-color: var(--gray3) ;
+}
+.submit-btn{
+ cursor: pointer;
+ font-size:18px;
+ font-weight:bold;
+ background:var(--gray3);
+ width:60px;
+ padding:10px;
+ text-align:center;
+ text-decoration:none;
+ color:var(--black3);
+ border-radius: 5px;
+ box-shadow: 0 0 10px rgba(146, 141, 141, 0.847);
+ -webkit-transition-duration:0.3s;
+ transition-duration:0.3s;
+ -webkit-transition-property:box-shadow, transform;
+ transition-property: box-shadow, transform;
+}
+.submit-btn:hover, .submit-btn:focus, .submit-btn:active{
+ box-shadow: 0 0 20px rgba(0,0,0,0.5);
+ -webkit-transform: scale(1.05);
+ transform: scale(1.05);
+}
+
+/*-----Click Button------*/
+.click-btn:hover{
+  color: var(--gray2);
+  background-color: var(--gray3) ;
+}
+.click-btn{
+ cursor: pointer;
+ font-size:18px;
+ font-weight:bold;
+ background:var(--gray3);
+ width:60px;
+ padding:10px;
+ text-align:center;
+ text-decoration:none;
+ color:var(--blue1);
+ border-radius: 5px;
+ box-shadow: 0 0 10px rgba(146, 141, 141, 0.847);
+ -webkit-transition-duration:0.3s;
+ transition-duration:0.3s;
+ -webkit-transition-property:box-shadow, transform;
+ transition-property: box-shadow, transform;
+}
+.click-btn:hover, .click-btn:focus, .click-btn:active{
+ box-shadow: 0 0 20px rgba(0,0,0,0.5);
+ -webkit-transform: scale(1.05);
+ transform: scale(1.05);
+}
+
+/* log in/ register page*/
+
+.container2{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 90vh;
+   background-color: var(--gray4);
+}
+
+.container2 form{
+   padding:2rem;
+   border-radius: 1.5rem;
+   border:var(--border);
+   background-color: var(--gray2);
+   width: 40rem; 
+   text-align: center;
+}
+
+.container2 form h3{
+   font-size: 2rem;
+   color: var(--black1);
+   margin-bottom: 1.5rem;
+   background-color: var(--gray2);
+}
+
+.container2 form h4{
+  font-size: 2rem;
+  color: var(--black1);
+  margin-bottom: 1.5rem;
+  background-color: var(--gray2);
+}
+
+.container2 form .box{
+   width: 100%;
+   padding:1.2rem 1.4rem;
+   font-size: 1.8rem;
+   color: var(--black1);
+   border:var(--border);
+   background-color: var(--gray1);
+   margin:1rem 0;
+   border-radius: 1.5rem;
+}
+
+/*reviewers/collaborators page*/
+
+.container4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: var(--gray4);
+  box-shadow: 0 2px 5px var(--gray1);
+}
+
+.container4 .back-btn {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.container4 h2 {
+  font-size: 30px;
+  font-weight: normal;
+  margin: 0;
+  margin: 0;
+	flex: 1;
+	text-align: center;
+}
+
+.container4 .filter-select {
+  padding: 10px;
+  background-color: var(--gray1);
+  border: 1px solid var(--black2);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--black1);
+}
+
+.filter-select:hover {
+  background-color: var(--black7);
+  color: var(--gray4);
+}
+
+
+/*upload impact*/
+.formBox{
+  margin-top: 80px;
+  padding:50px;
+}
+.inputBox{
+  position:relative;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+.input{
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  border-bottom: 2px solid rgba(0,0,0,.2);
+}
+.inputText{
+  position: absolute;
+  line-height: 20px;
+  font-size: 20px;
+  transition: .5s;
+  opacity: .5;
+}
+textarea{
+  height:50px !important;
+}
+.formBox form div{
+  position: relative;
+}
+.formBox form div label{
+  position: absolute;
+  top:10px;
+  left:0;
+  pointer-events: none;
+  color:#999;
+  transition: .5s;
+}
