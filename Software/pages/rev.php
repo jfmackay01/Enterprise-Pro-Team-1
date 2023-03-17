@@ -37,7 +37,7 @@ session_start();
 
 
     <section class="container3">
-        <fieldset>
+       <!-- <fieldset>
             <legend>Select a Reviewer</legend>
 
             <form method="post" action="answering.php">
@@ -48,7 +48,20 @@ session_start();
                 <?php endforeach; ?>
                 <input class="btn" name= "submit" type="submit" value="Submit">
             </form>
-        </fieldset>
+        </fieldset>-->
+
+        
+        
+        <?php
+        if (isset($_SESSION["logon"])){
+            require '../php/showReviewers.php'; 
+        }
+        else{
+            echo ("Logon to view reviewers");
+        }
+
+        ?>
+
     </section>
 
 
