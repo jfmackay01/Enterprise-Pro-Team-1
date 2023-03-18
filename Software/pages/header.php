@@ -36,15 +36,10 @@
                         echo ("
                            <a href='../pages/login.php' class='loggedin' style ='float: right' > Login
                         ");
-                        } else {//otherwise show profile and logoff button
+                        } else {//otherwise show logoff button
                            echo ("
                               <a href='../php/logoff.php' class='loggedout' style ='float: right' > Log off
                            ");
-                           if ($_SESSION["admin"] == true) {//if admin show admin links
-                              echo ("
-                                 <a href='adminhome.php' class='btn' style='float:right' > Admin home
-                              ");
-                           }
                         }
                   ?> <img src="https://i.imgur.com/hFKDKMc.png" width="40" height="40"></a>
                </div>
