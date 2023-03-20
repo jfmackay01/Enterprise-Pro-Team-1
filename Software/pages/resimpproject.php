@@ -11,12 +11,12 @@ session_start();
 </head>
 
 <body>
-   <a class="back-btn" href="home.php"> <img src="../img/back.png" width="50" height="50"></a>
-   <div class="welcome">
-      <h1>
-         Research Project Impact
-      </h1>
+<div class="container4">
+      <!-- back button -->
+      <a class="back-btn" href="home.php" > Back </a>
+         <h2>Research Project</h2>
    </div>
+
    <br><br>
    <div class="content" align="center">
       <label for="categories">Please choose one of the following faculties:</label>
