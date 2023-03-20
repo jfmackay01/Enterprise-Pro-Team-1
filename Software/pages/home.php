@@ -36,7 +36,7 @@
                   </div>
                   <img src='https://i.imgur.com/iGPyZYp.png'>
                   <div class='clickhere'>
-                     <a href='#Dashboard'>
+                     <a href='dashboard.php'>
                         <h3>Click Here</h3>
                      </a>
                   </div>
@@ -49,7 +49,7 @@
                   </div>
                   <img src='https://i.imgur.com/665Hakv.png'>
                   <div class='clickhere'>
-                     <a href='#Spreadsheet'>
+                     <a href='spreadsheet.php'>
                         <h3>Click Here</h3>
                      </a>
                   </div>

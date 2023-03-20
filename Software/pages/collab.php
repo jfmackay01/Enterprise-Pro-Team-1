@@ -22,9 +22,9 @@ session_start();
 
 <body>
 
-    <div class="container4">
+   <div class="container4">
         <!-- back button -->
-        <a class="back-btn" href="home.php" > <img src="../img/back.png" width="50" height="50"></a>
+        <a class="back-btn" href="home.php" >Back</a>
         <h2>Collaborators</h2>
 
         <!-- filter by option -->
@@ -36,7 +36,7 @@ session_start();
     </div>
 
     <section class="container3">
-        <fieldset>
+   <!--      <fieldset>
             <legend>Select a Collaborator</legend>
 
             <form method="post" action="answering.php">
@@ -47,10 +47,17 @@ session_start();
                 <?php endforeach; ?>
                 <input class="btn" name= "submit" type="submit" value="Submit">
             </form>
-        </fieldset>
+        </fieldset>-->
+
     </section>
-
-
+    <?php
+        if (isset($_SESSION["logon"])){
+            require '../php/showCollab.php';
+        }
+        else{
+            echo ("Logon to view collaborators");
+        }
+        ?>
 
 </body>
 

@@ -24,7 +24,7 @@ session_start();
 
    <div class="container4">
       <!-- back button -->
-      <a class="back-btn" href="home.php" > <img src="../img/back.png" width="50" height="50"></a>
+      <a class="back-btn" href="home.php" > Back </a>
          <h2>Collaborator name</h2>
       
         <!-- filter by option -->

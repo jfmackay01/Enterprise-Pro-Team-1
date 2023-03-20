@@ -1,6 +1,3 @@
-
-/* authors Samuel Coyle, Ceridwen Grey, Joanna Oruba, Joshua Mackey, Shamim Akbari Bavani */
-
 :root{
   --black1:#090909;
   --black2:#121212;
@@ -14,6 +11,8 @@
   --gray2:#dbdbdb;
   --gray3:#e7e7e7;
   --gray4:#f4f4f4;
+
+  --blue1:#0099ff;
 
   --border:.4rem solid --gray1;
 }
@@ -46,6 +45,9 @@ body{
 .container-fluid {
   background-color: #161616;
 }
+.container-fluid2 {
+  background-color: #ffffff;
+}
 .container {
   position:relative
 }
@@ -68,24 +70,85 @@ body{
   padding: 16px;
 }
 
-.btn{
-   display: inline-block;
-   border-radius: .5rem;
-   margin-top: 1rem;
-   font-size: 1.8rem;
-   color:var(--gray4);
-   cursor: pointer;
-   padding:1rem 3rem;
-   background-color: var(--black2) ;
-}
-
+/*-----Back Button------*/
 .btn:hover{
    color: var(--gray1);
    background-color: var(--black7) ;
-
+}
+.back-btn{
+  cursor: pointer;
+  font-size:18px;
+  font-weight:bold;
+  background:var(--gray3);
+  width:60px;
+  padding:10px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--blue1);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(146, 141, 141, 0.847);
+  -webkit-transition-duration:0.3s;
+  transition-duration:0.3s;
+  -webkit-transition-property:box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.back-btn:hover, .back-btn:focus, .back-btn:active{
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-/* log in/ register page */
+/*-------Click Button-------*/
+.click-btn{
+  cursor: pointer;
+  font-size:18px;
+  font-weight:bold;
+  background:var(--gray3);
+  width:160px;
+  padding:5px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--blue1);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(146, 141, 141, 0.847);
+  -webkit-transition-duration:0.3s;
+  transition-duration:0.3s;
+  -webkit-transition-property:box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+
+.click-btn:hover, .click-btn:focus, .click-btn:active{
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+/*----Submit Button-----*/
+.submit-btn{
+  cursor: pointer;
+  font-size:18px;
+  font-weight:bold;
+  background:var(--gray3);
+  width:160px;
+  padding:5px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--blue1);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(146, 141, 141, 0.847);
+  -webkit-transition-duration:0.3s;
+  transition-duration:0.3s;
+  -webkit-transition-property:box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+
+.submit-btn:hover, .submit-btn:focus, .submit-btn:active{
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+/* log in/ register page*/
 
 .container2{
    display: flex;
@@ -111,13 +174,6 @@ body{
    background-color: var(--gray2);
 }
 
-.container2 form h4{
-  font-size: 2rem;
-  color: var(--black1);
-  margin-bottom: 1.5rem;
-  background-color: var(--gray2);
-}
-
 .container2 form .box{
    width: 100%;
    padding:1.2rem 1.4rem;
@@ -129,7 +185,7 @@ body{
    border-radius: 1.5rem;
 }
 
-/* reviewers/collaborators page */
+/*reviewers/collaborators page*/
 
 .container4 {
   display: flex;
@@ -172,11 +228,44 @@ body{
   color: var(--gray4);
 }
 
-.loggedin {
-	color: white;
+/*upload impact*/
+.formBox{
+  margin-top: 80px;
+  padding:50px;
 }
-
-.loggedout {
-	color: white;
+.inputBox{
+  position:relative;
+  box-sizing: border-box;
+  margin-bottom: 40px;
 }
-
+.input{
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  border-bottom: 2px solid rgba(0,0,0,.2);
+}
+.inputText{
+  position: absolute;
+  line-height: 20px;
+  font-size: 20px;
+  transition: .5s;
+  opacity: .5;
+}
+textarea{
+  height:50px !important;
+}
+.formBox form div{
+  position: relative;
+}
+.formBox form div label{
+  position: absolute;
+  top:10px;
+  left:0;
+  pointer-events: none;
+  color:#999;
+  transition: .5s;
+}
