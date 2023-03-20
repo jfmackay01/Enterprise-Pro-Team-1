@@ -52,7 +52,7 @@ session_start();
                </div>
                <img src="https://i.imgur.com/jQKhmPH.png">
                <div class="clickhere">
-                  <a href="#Upload">
+                  <a href="uploadresearch.php">
                      <h3>Click Here</h3>
                   </a>
                </div>
