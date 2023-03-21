@@ -18,15 +18,12 @@ function showImpactProjects($id, $conn)
             $recordName = $record['impactActivity'];
             $evidence = $record['ImpactEvidence'];
 
-
             //show item details in a table
-            echo ("<table>");
-            echo ("<tr>");
-            echo nl2br("<td><h3>" . $recordName . " </h3></td>"); //show name
-            //echo ('<br>');
-            echo ('<td><h4> &nbsp Evidence: ' . $evidence . "."); //show summary
-            echo ("</h3></td></tr>");
-            echo ("</table>");
+            echo "<tr>";
+            echo "<td>" . $recordName . "</td>"; //show name
+            echo "<td>". $evidence . ".</td>"; //show summary
+            echo "</tr>";
+           
 
 
         }
@@ -34,4 +31,5 @@ function showImpactProjects($id, $conn)
     else{
         echo("No Impact Projects");
     }
+ 
 }
