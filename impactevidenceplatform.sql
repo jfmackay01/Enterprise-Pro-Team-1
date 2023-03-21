@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2023 at 07:24 PM
+-- Generation Time: Mar 21, 2023 at 11:47 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -23,7 +23,6 @@ USE `impactevidenceplatform`;
 -- Table structure for table `departments`
 --
 -- Creation: Mar 07, 2023 at 11:23 AM
--- Last update: Mar 14, 2023 at 01:18 PM
 --
 
 DROP TABLE IF EXISTS `departments`;
@@ -31,6 +30,10 @@ CREATE TABLE `departments` (
   `departmentID` tinyint(7) NOT NULL,
   `departmentName` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `departments`:
+--
 
 --
 -- Dumping data for table `departments`
@@ -57,12 +60,17 @@ CREATE TABLE `impact_files` (
   `iFileName` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELATIONSHIPS FOR TABLE `impact_files`:
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `impact_record`
 --
 -- Creation: Mar 14, 2023 at 11:38 AM
+-- Last update: Mar 21, 2023 at 10:20 AM
 --
 
 DROP TABLE IF EXISTS `impact_record`;
@@ -74,11 +82,21 @@ CREATE TABLE `impact_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- RELATIONSHIPS FOR TABLE `impact_record`:
+--   `researchID`
+--       `research_project` -> `projectID`
+--
+
+--
 -- Dumping data for table `impact_record`
 --
 
 INSERT INTO `impact_record` (`impactID`, `impactActivity`, `ImpactEvidence`, `researchID`) VALUES
-(1, 'Test Activity', 'Insert Evidence Here', 1);
+(1, 'Test Activity', 'Insert Evidence Here', 1),
+(2, 'Impact record 1.2', 'A lot', 1),
+(3, 'Impact Test 2.1', 'A brief description of evidence', 2),
+(4, 'Impact Test 2.2', 'Another brief description', 2),
+(5, 'Impact test 3', 'A brief description of the evidence', 3);
 
 -- --------------------------------------------------------
 
@@ -93,6 +111,10 @@ CREATE TABLE `progress` (
   `progressID` tinyint(11) NOT NULL,
   `progressStage` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `progress`:
+--
 
 --
 -- Dumping data for table `progress`
@@ -112,6 +134,7 @@ INSERT INTO `progress` (`progressID`, `progressStage`) VALUES
 -- Table structure for table `project_allocations`
 --
 -- Creation: Mar 14, 2023 at 01:33 PM
+-- Last update: Mar 21, 2023 at 10:46 AM
 --
 
 DROP TABLE IF EXISTS `project_allocations`;
@@ -122,11 +145,27 @@ CREATE TABLE `project_allocations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- RELATIONSHIPS FOR TABLE `project_allocations`:
+--   `projectID`
+--       `research_project` -> `projectID`
+--   `userID`
+--       `users` -> `userID`
+--
+
+--
 -- Dumping data for table `project_allocations`
 --
 
 INSERT INTO `project_allocations` (`userID`, `projectID`, `role`) VALUES
-(1, 1, 0);
+(1, 1, 0),
+(2, 1, 1),
+(4, 2, 1),
+(5, 3, 1),
+(6, 1, 0),
+(6, 2, 0),
+(7, 3, 0),
+(8, 1, 1),
+(8, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -143,13 +182,18 @@ CREATE TABLE `research_files` (
   `rFileName` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELATIONSHIPS FOR TABLE `research_files`:
+--   `projectID`
+--       `research_project` -> `projectID`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `research_grant`
 --
 -- Creation: Mar 14, 2023 at 01:35 PM
--- Last update: Mar 14, 2023 at 01:22 PM
 --
 
 DROP TABLE IF EXISTS `research_grant`;
@@ -159,6 +203,10 @@ CREATE TABLE `research_grant` (
   `dateGiven` date NOT NULL,
   `givenBy` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `research_grant`:
+--
 
 --
 -- Dumping data for table `research_grant`
@@ -173,7 +221,7 @@ INSERT INTO `research_grant` (`grantID`, `amount`, `dateGiven`, `givenBy`) VALUE
 -- Table structure for table `research_project`
 --
 -- Creation: Mar 14, 2023 at 06:19 PM
--- Last update: Mar 14, 2023 at 06:19 PM
+-- Last update: Mar 21, 2023 at 10:16 AM
 --
 
 DROP TABLE IF EXISTS `research_project`;
@@ -197,11 +245,21 @@ CREATE TABLE `research_project` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- RELATIONSHIPS FOR TABLE `research_project`:
+--   `grantID`
+--       `research_grant` -> `grantID`
+--   `departmentID`
+--       `departments` -> `departmentID`
+--
+
+--
 -- Dumping data for table `research_project`
 --
 
 INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `projectInvestigator`, `grantID`, `researchOutput`, `projectSummary`, `potentialUOA`, `impactProgress`, `notes`, `meetings`, `followup`, `underpinnedResearch`, `reach`, `significance`, `quality`) VALUES
-(1, 'Test Project', 1, 'Bob Bobson', 1, NULL, 'A test Project', 0, 4, 'test', NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'Test Project', 1, 'Bob Bobson', 1, NULL, 'A test Project', 36, 4, 'test', NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Test Project 2', 2, 'Alice Anderson', NULL, NULL, NULL, 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Test Project 3', 3, 'Charlie Chaplin', NULL, NULL, 'A third test project', 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -209,7 +267,6 @@ INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `pr
 -- Table structure for table `uoa`
 --
 -- Creation: Mar 14, 2023 at 11:09 AM
--- Last update: Mar 14, 2023 at 01:17 PM
 --
 
 DROP TABLE IF EXISTS `uoa`;
@@ -217,6 +274,10 @@ CREATE TABLE `uoa` (
   `uoaID` tinyint(4) NOT NULL,
   `uoaTitle` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `uoa`:
+--
 
 --
 -- Dumping data for table `uoa`
@@ -266,6 +327,7 @@ INSERT INTO `uoa` (`uoaID`, `uoaTitle`) VALUES
 -- Table structure for table `users`
 --
 -- Creation: Mar 14, 2023 at 01:33 PM
+-- Last update: Mar 21, 2023 at 10:44 AM
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -279,13 +341,22 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- RELATIONSHIPS FOR TABLE `users`:
+--
+
+--
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`userID`, `email`, `password`, `admin`, `collab`, `reviewer`) VALUES
 (1, 'test@example.com', '098f6bcd4621d373cade4e832627b4f6', 0, 1, 0),
 (2, 'test2@email.com', 'ad0234829205b9033196ba818f7a872b', 0, 0, 1),
-(3, 'adminTest@email.com', '72adc15352810c6d960fea7edb398c77', 1, 0, 0);
+(3, 'adminTest@email.com', '72adc15352810c6d960fea7edb398c77', 1, 0, 0),
+(4, 'reviewTest1@email.com', '95b2f1f3a46662b35005e73a226f4e74', 0, 0, 1),
+(5, 'reviewTest2@email.com', '62fd3b62b583fdaae433ff899896fc4b', 0, 0, 1),
+(6, 'collabTest1@email.com', 'c16d0a4c58bb736847151491246b51b1', 0, 1, 0),
+(7, 'collabTest2@email.com', '30d18856a483a4605c1a6bbdb57d1d52', 0, 1, 0),
+(8, 'reviewTest3@email.com', '6e1e7990f5231d978817a49ef1002e85', 0, 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -383,7 +454,7 @@ ALTER TABLE `impact_files`
 -- AUTO_INCREMENT for table `impact_record`
 --
 ALTER TABLE `impact_record`
-  MODIFY `impactID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `impactID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `progress`
@@ -407,7 +478,7 @@ ALTER TABLE `research_grant`
 -- AUTO_INCREMENT for table `research_project`
 --
 ALTER TABLE `research_project`
-  MODIFY `projectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `projectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `uoa`
@@ -419,7 +490,7 @@ ALTER TABLE `uoa`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
