@@ -2,7 +2,6 @@
 
 function conductAssignation($userID, $projectID, $role, $conn)
 {
-    echo ("run");
     require_once("../db/dbConnect.php");
     $errors = array();
     //check correct input form
@@ -48,7 +47,6 @@ function conductAssignation($userID, $projectID, $role, $conn)
     if (count($errors) == 0) {
         //query to add assignation
         $query = "INSERT INTO project_allocations (userID,projectID,role) VALUES ('$userID', '$projectID', '$role')";
-        echo ($query);
 
         if (mysqli_query($conn, $query)) {
             echo ("Project Allocation Added");
@@ -59,11 +57,11 @@ function conductAssignation($userID, $projectID, $role, $conn)
             $roleUpdate = $role == 0 ? "collab" : "reviewer";
 
             $query = "UPDATE users SET ". $roleUpdate ." = 1 WHERE userID ='$userID' ";
-            echo ($query);
+
             echo  nl2br("\n");
             if (mysqli_query($conn, $query)) {
-                echo ("User Data Updated");
-                echo  nl2br("\n");
+                //echo ("User Data Updated");
+                //echo  nl2br("\n");
             } else {
                 array_push($errors, 'Error updating user data');
             }
