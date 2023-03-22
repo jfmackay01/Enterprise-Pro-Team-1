@@ -20,21 +20,18 @@ function showResearchProject($projectID, $conn)
             $department = $project['departmentName'];
 
             //show item details in a table
-            echo ("<table>");
             echo ("<tr>");
-            echo nl2br("<td><h3>" . $projectTitle . " </h3></td>"); //show name
+            echo nl2br("<td>" . $projectTitle . " </td>"); //show name
             //echo ('<br>');
-            echo ('<td><h4> Summary: ' . $projectSummary . "."); //show summary
-            echo ("</h3></td></tr>");
-
-            echo ("<tr>");
-            echo nl2br("<td>Project Investigator: " . $projectInvestigator . "&nbsp</td>&nbsp");
-            echo nl2br("<td>Department: " . $department . "</td>");
-            echo ("</tr>");
+            echo ('<td>' . $projectSummary . "</td>"); //show summary
+            echo nl2br("<td>" . $projectInvestigator . "</td>");
+            echo nl2br("<td>" . $department . "</td>");
+           
             
-            echo ("</table>");
-            require("../php/viewImpactButton.php");
-
+            echo ("<td> ");
+            require("../php/viewImpactButton.php"); 
+            echo ("</td>");
+            echo ("</tr>");
         }
     }
 }
