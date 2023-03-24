@@ -9,12 +9,12 @@ $errors = array();
 if (isset($_POST)) {
   // receive all input values from the form and sanitize
   $email = mysqli_real_escape_string($conn, $_POST['email']);
-  $password_1 = mysqli_real_escape_string($conn, $_POST['password']);
-  $password_2 = mysqli_real_escape_string($conn, $_POST['repassword']);
+  $password_1 = $_POST['password'];
+  $password_2 = $_POST['repassword'];
 
   $email = sanitizeInput($email);
-  $password_1 = sanitizeInput($password_1);
-  $password_2 = sanitizeInput($password_2);
+  //$password_1 = sanitizeInput($password_1);
+ // $password_2 = sanitizeInput($password_2);
 
 
   //make sure form is filled in correctily
@@ -35,8 +35,7 @@ if (isset($_POST)) {
     array_push($errors, 'Inputs must not be NULL');
   }
 
-  // Check the database to make sure 
-  // a user does not already exist with the same username and/or email
+  // Check the database to make sure a user does not already exist with the same email
 
 
   $user_check_query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
@@ -53,7 +52,10 @@ if (isset($_POST)) {
 
   //if no errors add to database
   if (count($errors) == 0) {
-    $password = md5($password_1); //encrypt the password before saving in the database
+
+    //hash the pasword
+    $options = ['cost' =>12];
+    $password = password_hash($password_1,PASSWORD_BCRYPT, $options);
 
     $query = "INSERT INTO users (password, email) VALUES('$password','$email')";
     if (mysqli_query($conn, $query)) {

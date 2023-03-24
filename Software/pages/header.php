@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-4">
                <div class="profile">
-                  <a href="#profile"> <img src="https://i.imgur.com/S8Zjwpq.png"></a>
+                  <a href="../pages/userProfile.php"> <img src="https://i.imgur.com/S8Zjwpq.png"></a>
                   <?php
                      if (!isset($_SESSION["logon"])) {//if not logged on show login and register button
                         echo ("

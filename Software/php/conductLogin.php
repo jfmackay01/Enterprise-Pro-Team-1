@@ -1,12 +1,17 @@
 <?php
+//connect to database
 require '../db/dbconnect.php';
+//import function for sanitising input
+require '../php/sanitizeInput.php';
 //set array to hold errors
 $errors = array();
-if (isset($_POST)) {//only continue if form used POST method
+if (isset($_POST)) { //only continue if form used POST method
     //ensure email and password are of correct form for SQL queries
+    
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-
+    $password =  $_POST['password'];
+    //$password = sanitizeInput($password);mysqli_real_escape_string($conn,
+    $email = sanitizeInput($email);
     //check if email and password filled out
     if (empty($email)) {
         array_push($errors, "Username is required");
@@ -14,18 +19,16 @@ if (isset($_POST)) {//only continue if form used POST method
     if (empty($password)) {
         array_push($errors, "Password is required");
     }
-    if (count($errors) == 0) {//if no errors
+    if (count($errors) == 0) { //if no errors
 
         //select from database with matching email
         $nameQuery = "SELECT * FROM users WHERE email = '$email'";
         $result = mysqli_query($conn, $nameQuery);
         $user = mysqli_fetch_assoc($result);
-        if ($user) {//if user with same email found check password matches
-            $password = md5($password);
-            $passwordQuery = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
-            $result = mysqli_query($conn, $passwordQuery);
-            $user = mysqli_fetch_assoc($result);
-            if ($user) {
+        if ($user) { //if user with same email found check password matches
+
+            if (password_verify($password, $user['password'])){
+
 
                 //Logon the user, setting session variables
                 $_SESSION["logon"] = true;
@@ -33,32 +36,30 @@ if (isset($_POST)) {//only continue if form used POST method
                 $_SESSION['userID'] = $user['userID'];
 
                 //check user roles
-                if($user["admin"] == 1){
+                if ($user["admin"] == 1) {
                     $_SESSION["admin"] = true;
-                }
-                else{
+                } else {
                     $_SESSION["admin"] = false;
                 }
-                if($user["collab"] == 1){
+                if ($user["collab"] == 1) {
                     $_SESSION["collab"] = true;
-                }
-                else{
+                } else {
                     $_SESSION["collab"] = false;
                 }
-                if($user["reviewer"] == 1){
+                if ($user["reviewer"] == 1) {
                     $_SESSION["reviewer"] = true;
-                }
-                else{
+                } else {
                     $_SESSION["reviewer"] = false;
                 }
 
 
                 header('location: ../pages/home.php');
+               
             } else {
-                array_push($errors, "Incorrect Password");
+                array_push($errors, "Incorrect Email or Password - p");
             }
         } else {
-            array_push($errors, "User not Found");
+            array_push($errors, "Incorrect Email or Password Found - u");
         }
     }
     if (count($errors) != 0) {
@@ -68,5 +69,6 @@ if (isset($_POST)) {//only continue if form used POST method
         }
     }
 }
+
 
 $conn->close(); //closing the connection
