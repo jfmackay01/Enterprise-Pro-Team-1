@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 11:47 AM
+-- Generation Time: Mar 24, 2023 at 03:49 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -32,10 +32,6 @@ CREATE TABLE `departments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `departments`:
---
-
---
 -- Dumping data for table `departments`
 --
 
@@ -60,17 +56,12 @@ CREATE TABLE `impact_files` (
   `iFileName` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELATIONSHIPS FOR TABLE `impact_files`:
---
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `impact_record`
 --
 -- Creation: Mar 14, 2023 at 11:38 AM
--- Last update: Mar 21, 2023 at 10:20 AM
 --
 
 DROP TABLE IF EXISTS `impact_record`;
@@ -80,12 +71,6 @@ CREATE TABLE `impact_record` (
   `ImpactEvidence` varchar(64) NOT NULL COMMENT 'Description of evidence provided',
   `researchID` int(11) NOT NULL COMMENT 'ID of related research project'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `impact_record`:
---   `researchID`
---       `research_project` -> `projectID`
---
 
 --
 -- Dumping data for table `impact_record`
@@ -113,10 +98,6 @@ CREATE TABLE `progress` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `progress`:
---
-
---
 -- Dumping data for table `progress`
 --
 
@@ -134,7 +115,6 @@ INSERT INTO `progress` (`progressID`, `progressStage`) VALUES
 -- Table structure for table `project_allocations`
 --
 -- Creation: Mar 14, 2023 at 01:33 PM
--- Last update: Mar 21, 2023 at 10:46 AM
 --
 
 DROP TABLE IF EXISTS `project_allocations`;
@@ -143,14 +123,6 @@ CREATE TABLE `project_allocations` (
   `projectID` int(11) NOT NULL,
   `role` tinyint(1) NOT NULL COMMENT '0 for collaborator, 1 for reviewer'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `project_allocations`:
---   `projectID`
---       `research_project` -> `projectID`
---   `userID`
---       `users` -> `userID`
---
 
 --
 -- Dumping data for table `project_allocations`
@@ -182,12 +154,6 @@ CREATE TABLE `research_files` (
   `rFileName` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELATIONSHIPS FOR TABLE `research_files`:
---   `projectID`
---       `research_project` -> `projectID`
---
-
 -- --------------------------------------------------------
 
 --
@@ -205,10 +171,6 @@ CREATE TABLE `research_grant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `research_grant`:
---
-
---
 -- Dumping data for table `research_grant`
 --
 
@@ -221,7 +183,6 @@ INSERT INTO `research_grant` (`grantID`, `amount`, `dateGiven`, `givenBy`) VALUE
 -- Table structure for table `research_project`
 --
 -- Creation: Mar 14, 2023 at 06:19 PM
--- Last update: Mar 21, 2023 at 10:16 AM
 --
 
 DROP TABLE IF EXISTS `research_project`;
@@ -245,14 +206,6 @@ CREATE TABLE `research_project` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `research_project`:
---   `grantID`
---       `research_grant` -> `grantID`
---   `departmentID`
---       `departments` -> `departmentID`
---
-
---
 -- Dumping data for table `research_project`
 --
 
@@ -274,10 +227,6 @@ CREATE TABLE `uoa` (
   `uoaID` tinyint(4) NOT NULL,
   `uoaTitle` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `uoa`:
---
 
 --
 -- Dumping data for table `uoa`
@@ -326,8 +275,8 @@ INSERT INTO `uoa` (`uoaID`, `uoaTitle`) VALUES
 --
 -- Table structure for table `users`
 --
--- Creation: Mar 14, 2023 at 01:33 PM
--- Last update: Mar 21, 2023 at 10:44 AM
+-- Creation: Mar 24, 2023 at 01:43 PM
+-- Last update: Mar 24, 2023 at 02:45 PM
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -341,22 +290,20 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `users`:
---
-
---
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`userID`, `email`, `password`, `admin`, `collab`, `reviewer`) VALUES
-(1, 'test@example.com', '098f6bcd4621d373cade4e832627b4f6', 0, 1, 0),
-(2, 'test2@email.com', 'ad0234829205b9033196ba818f7a872b', 0, 0, 1),
-(3, 'adminTest@email.com', '72adc15352810c6d960fea7edb398c77', 1, 0, 0),
-(4, 'reviewTest1@email.com', '95b2f1f3a46662b35005e73a226f4e74', 0, 0, 1),
-(5, 'reviewTest2@email.com', '62fd3b62b583fdaae433ff899896fc4b', 0, 0, 1),
-(6, 'collabTest1@email.com', 'c16d0a4c58bb736847151491246b51b1', 0, 1, 0),
-(7, 'collabTest2@email.com', '30d18856a483a4605c1a6bbdb57d1d52', 0, 1, 0),
-(8, 'reviewTest3@email.com', '6e1e7990f5231d978817a49ef1002e85', 0, 0, 1);
+(1, 'test@example.com', '$2y$12$mEuqI.gPmW6vqaauW7HGj.2GQUld0yRbVIESm/DTTv/ZblCwzNMmq', 0, 1, 0),
+(2, 'test2@email.com', '$2y$12$WnPDhmD36kXURRarMTQf4.08/gE7BRCP0opIj/vpgLiyp.XiO033e', 0, 0, 1),
+(3, 'adminTest@email.com', '$2y$12$u.TZPfmx/jjz4Yz0AbKM5eeW4LWfIMd2.cIpTLKw3gxQJ6r0bVlT2', 1, 0, 0),
+(4, 'reviewTest1@email.com', '$2y$12$4hh8xEWJdXzj5kCG6di0LOZJBDg4/V4h96ynvndPgHpC9crB5mgKy', 0, 0, 1),
+(5, 'reviewTest2@email.com', '$2y$12$.rgObDwpTACF2HBSOuGDSek91/mNJe31eeBHim.SooQsSST283bF6', 0, 0, 1),
+(6, 'collabTest1@email.com', '$2y$12$i0A98SGRqI/bLnhl.rnoxO3oyQVBm/szxv0YAVyy6/Hbsic9sB33m', 0, 1, 0),
+(7, 'collabTest2@email.com', '$2y$12$/ZhuPi.fey/m688hZaSZDeTX95zYAtQECm6s9Q0eZOyIvNS8XJVw.', 0, 1, 0),
+(8, 'reviewTest3@email.com', '$2y$12$218vu8BuIOSg4Oa6Ozt6cef/wD95TchuAxPpfH/9Pz0rh7d591f0m', 0, 0, 1),
+(9, 'test3@email.com', '$2y$12$YMsKD5xfUiB4QFFGIzx9xeswgrIPAdl2vJVUBMwCB2i7j.9JJwE1K', 0, 0, 0),
+(10, 'test4@email.com', '$2y$12$uge3.kQZlne/AXEixwguTux46HQabxu2Uc5Inij9mPcdteYxQSa0m', 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -490,7 +437,7 @@ ALTER TABLE `uoa`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
