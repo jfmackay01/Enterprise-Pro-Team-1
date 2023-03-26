@@ -30,6 +30,7 @@ session_start();
       <input type="submit">
    </div>
    <br><br><br>
+
    <div class="container">
       <div class="row gy-5">
          <div class="col-lg-4">
@@ -71,8 +72,41 @@ session_start();
                </div>
             </div>
          </div>
+
+         <!-- Notes section -->
+         <div class="row gy-5">
+
+         <?php
+            if (isset($_SESSION["logon"])) {
+               if ($_SESSION["admin"] == true) {//if admin show admin links
+                  echo("
+            <div class='col-lg-4'>
+               <div class='p-3 border bg-light'>
+                  <div class='res'>
+                     <h2> Notes </h2>
+                  </div>
+                  <img src='https://i.imgur.com/6zxyhsM.png' width='45' height='31'>
+                  <div class='clickhere'>
+                     <a href='notes.php'>
+                        <h3>Click Here</h3> 
+                     </a>  
+                  </div>
+               </div>
+            </div>
+            
+            ");
+         }
+      }
+   ?>
+         </div>
+
       </div>
    </div>
+
+
+
+
+
 </body>
 
 </html>
