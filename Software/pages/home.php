@@ -59,7 +59,6 @@
          }
       }
    ?>
-
             <div class="col-lg-6">
                <div class="p-3 border bg-light">
                   <div class="col">
@@ -119,9 +118,11 @@
          </div>
       </div>
          
+             <!--Shows cookie acceptance box at bottom of screen, and does some javascript handling of storing if clicked or not locally-->
+             <div class="cookiesaccept">
+                <p>To use this website you must agree to use cookies. Press accept below to accept the usage of cookies.</p><button onclick="createItem()">Accept</button>
+            </div>
                     
-                     
 
-            
    </body>
 </html>
