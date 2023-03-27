@@ -49,5 +49,18 @@ function validateRegisterForm() {
 		window.history.back();
 	});*/
 
+//cookie acceptance
+
+
+function createItem() {
+    var x = localStorage.setItem("GPDR", "True");
+    var y = document.querySelector(".cookiesaccept");
+    if (y.style.display === "none") {
+        y.style.display = "block";
+    } else {
+        y.style.display = "none";
+    }
+} 
+
 
 
