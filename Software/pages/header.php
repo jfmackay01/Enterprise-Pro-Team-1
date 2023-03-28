@@ -10,6 +10,7 @@
 
 
 <body>
+
 <div class="container-fluid">
          <div class="row">
             <div class="col-md-4">
@@ -32,14 +33,12 @@
                <div class="profile">
                   <a href="../pages/userProfile.php"> <img src="https://i.imgur.com/S8Zjwpq.png"></a>
                   <?php
-                     if (!isset($_SESSION["logon"])) {//if not logged on show login and register button
+                     if (isset($_SESSION["logon"])) {//if not logged on go to login page
                         echo ("
-                           <a href='../pages/login.php' class='loggedin' style ='float: right' > Login
-                        ");
-                        } else {//otherwise show logoff button
-                           echo ("
                               <a href='../php/logoff.php' class='loggedout' style ='float: right' > Log off
                            ");
+                        } else if(!str_ends_with( $_SERVER['REQUEST_URI'], "login.php")){//otherwise show logoff button
+                           header('location: ../pages/login.php');
                         }
                   ?> <img src="https://i.imgur.com/hFKDKMc.png" width="40" height="40"></a>
                </div>

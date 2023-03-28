@@ -9,7 +9,7 @@
  */
 function showUser($userID, $conn)
 {
-    $query = "SELECT email FROM users WHERE userID = $userID";
+    $query = "SELECT * FROM users WHERE userID = $userID";
     $result = mysqli_query($conn, $query);
 
     if ($user = mysqli_fetch_assoc($result)) {
@@ -18,7 +18,15 @@ function showUser($userID, $conn)
 
         echo nl2br("User ID: " . $userID . "\n");
         echo ("User Email: " . $email);
-        echo ("<br>");
+        if($user['collab'] == 1){
+            echo ("<br>");
+            echo ("Collaborator");
+        }
+        if($user['reviewer'] == 1){
+            echo ("<br>");
+            echo ("Reviewer");
+        }
+        
     }
     if ($_SESSION['admin'] == true) {
         require('../php/assignToProjectButton.php');
