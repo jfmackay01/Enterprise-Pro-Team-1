@@ -37,7 +37,7 @@
                         echo ("
                               <a href='../php/logoff.php' class='loggedout' style ='float: right' > Log off
                            ");
-                        } else if(!str_ends_with( $_SERVER['REQUEST_URI'], "login.php")){//otherwise show logoff button
+                        } else if(!str_ends_with( $_SERVER['REQUEST_URI'], "login.php") && !str_ends_with( $_SERVER['REQUEST_URI'], "register.php") ){//otherwise show logoff button
                            header('location: ../pages/login.php');
                         }
                   ?> <img src="https://i.imgur.com/hFKDKMc.png" width="40" height="40"></a>
