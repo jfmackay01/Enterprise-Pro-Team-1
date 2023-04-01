@@ -7,13 +7,11 @@ session_start();
 
 <head>
 
-    <link rel="stylesheet" type="text/css" href="../css/standard.css">
 <!-- Standard Page Header -->
     <?php
     require 'header.php';
     ?>
-    <!-- ---------------- -->
-    <script src='../js/javascriptFunctions.js'></script>
+
 
 </head>
 
@@ -29,127 +27,51 @@ session_start();
     <div class="container-fluid2">
         <div class="container">
             <div class="formBox">
-                <form>
+                <form method="POST" enctype="multipart/form-data">
                     <div class="row">
-                        <h3>Associated Projects</h3>
+                        <h3>Impact Record</h3>
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <br>
-                                <div class="inputText">Project Name</div>
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <br>
-                                    <div class="inputText">PI and UoB Collaborators</div>
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="inputBox">
-                                    <div class="inputText">Summary of Research</div>
-                                    <textarea class="input"></textarea> 
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="inputBox">
-                                    <div class="inputText">Associated Grants</div>
-                                    <textarea class="input"></textarea> 
-                                </div>
-                            </div>
-                            <h3>External Collaborators/Partners/Beneficiaries</h3>
-                        <br><br>
 
-                            <div class="col-sm-4">
+                            
+                        <?php
+                            //drop down menu for project selection
+                            require("../php/projectDropDown.php");
+                        ?>
+
+                        <!-- impact activity text area-->
+                        <div class="col-sm-12">
                                 <div class="inputBox">
                                     <br>
-                                    <div class="inputText">Stakeholder</div>
-                                    <br>
-                                    <input type="text" name="" class="input">
+                                    <div class="inputText">Impact Activity</div>
+                                    
+                                    <input type="text" name="impactActivity" class="input">
                                 </div>
+                        </div>
+                        
+                        <!-- Impact Evidence text area-->
+                        <div class="col-sm-12">
+                            <div class="inputBox">
+                                <div class="inputText">Impact Evidence</div>
+                                <textarea class="input" name="impactEvidence"></textarea> 
                             </div>
-                            <div class="col-sm-4">
-                                <div class="inputBox">
-                                    <br>
-                                    <div class="inputText">Interactions and Relationship</div>
-                                    <br>
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="inputBox">
-                                    <br>
-                                    <div class="inputText">Potential for Impact</div>
-                                    <br>
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="inputBox">
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="inputBox">
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="inputBox">
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="inputBox">
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="inputBox">
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="inputBox">
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <br><br>
-                            <h3>Outputs</h3>
-                        <br>
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <br>
-                                    <div class="inputText">Output Link</div>
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <br>
-                                    <div class="inputText">Summary</div>
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <div class="inputText"></div>
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <div class="inputText"></div>
-                                    <input type="text" name="" class="input">
-                                </div>
-                            </div>
+                        </div>
+
+                        <input type="file" name="impFileUpload">  
+                        <br> <br>
+                    </div>
+                  
+                    <div class="click-btn">
+                        
+                        <input value="Submit" type="submit" class="btn" name="Submit"> 
                     </div>
                 </form>
-                <div class="click-btn">
-                        <h3>Submit</h3>
-                  </div>
+                
+                <?php 
+               
+                if (isset($_POST['Submit'])) {
+                    require '../php/fileUploadValidation.php';
+                 }
+                    ?>
             </div>
         </div>
     </div>
