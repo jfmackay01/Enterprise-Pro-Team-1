@@ -1,6 +1,6 @@
 <?php 
 
-function uploadImpactFile($iFileName, $researchID, $conn) {
+function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
 
     //connection with database
     require '../db/dbconnect.php';
@@ -8,16 +8,14 @@ function uploadImpactFile($iFileName, $researchID, $conn) {
     $errors = array();
     //upload impact project form to database 
     if (isset($_POST)) { //only continue if form used POST method
-        echo "inside uploadImpactFile";
+    
         $file = $_FILES['impFileUpload'];
         $iFileName = $_FILES['impFileUpload']['name'];
+        $fileTmpName = $_FILES['impFileUpload']['tmp_name'];
         $fileSize = $_FILES['impFileUpload']['size'];
         $fileError= $_FILES['impFileUpload']['error'];
 
-        $impactActivity = $_POST['impactActivity'];
-        $impactEvidence = $_POST['impactEvidence'];
-       
-        echo "got all the variables";
+        $isValidFile = true;
 
         //variable for file extension
         $fileExt = explode('.', $iFileName);
@@ -28,39 +26,26 @@ function uploadImpactFile($iFileName, $researchID, $conn) {
         $allowed = array('jpg', 'jpeg', 'pdf', 'png', 'txt', 'docx', 'xml');
 
         if (!empty($iFileName)) {
-            echo "   file not empty   ";
             //checking if right extension is uploaded
             if (in_array($fileActualExt, $allowed)){
                 //error handling
                 if ($fileError === 0) {
                     //max file size 50 mb 
                     if ($fileSize < 50000) {
-                        echo "correct size  ";
 
+                        //whole path to the destination file
                         $fileDestination = '../upload/';
                         $targetFilePath = $fileDestination . $iFileName;
 
+                        if(count($errors) == 0  && $isValidFile) {
+                            echo "  showing the results +  $impID +  $fileTmpName    +   $targetFilePath    " ;
 
-                        //get project ID from selection bar
-                        $query = "SELECT * FROM impact_record WHERE researchID = $researchID 
-                        AND impactActivity = $impactActivity AND impactEvidence = $impactEvidence";
-                         echo " impfile upload $file  imp activity $impactActivity  imp evidence $impactEvidence  ";
-                        $result = mysqli_query ($conn, $query);
-                        $check = mysqli_fetch_assoc($result);
-                        echo "impact ID $impactID   ";
-                        if (!$check) {
-                            array_push($errors, "Error getting the project details");
-                        }
-
-                        echo " check done ";
-                        if($result->num_rows >0) {
-                            echo "showing the results  ";
-                             
                             //upload file to database
-                            if(move_uploaded_file($iFileName, $targetFilePath)) {
-                                $insert = $db->$query("INSERT into impact_files(impactID, iFileName,) VALUES ('$impactID', '$iFileName')");
-                        
-                                if($insert) {
+                            if(move_uploaded_file($fileTmpName, $targetFilePath)) {
+
+                                $sql="INSERT into impact_files(impactID, iFileName,) VALUES ('$impID', '$iFileName')";
+                                
+                                if(mysqli_query($conn, $sql)) {
                                     echo "File uploaded sucessfully!";
                                 } else {
                                     echo "File upload failed!";
@@ -68,28 +53,32 @@ function uploadImpactFile($iFileName, $researchID, $conn) {
                             }  else {
                                 echo "There was an error uploading your file.";
                             }
-
+                            
                         }
                         else {
                             echo "This Impact Evidence doesn't exist.";
                         }
                     }
                     else {
-                        "Your file is over the file size limit (max 500mb)";
+                        echo "Your file is over the file size limit (max 500mb)";
+                        $isValidFile = false;
                     }
 
                 }
                 else {
                     echo "You cannot upload files of this type!";
+                    $isValidFile = false;
                 }
             }
                 
             else {
                 echo "No files have been chosen.";
+                $isValidFile = false;
             }
         }
         else {
             echo ("Please select file.");
+            $isValidFile = false;
         }
     }
 }

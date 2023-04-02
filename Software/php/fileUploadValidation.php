@@ -30,16 +30,27 @@ function uploadImpactRecord( $impactActivity, $impactEvidence, $researchID, $con
                        
 
                         if (count($errors) ==0) {
-                            echo "0 errors";
+                           
                             //insert given values to the database
                             $query = "INSERT INTO impact_record (impactActivity, impactEvidence, researchID) VALUES ('$impactActivity', '$impactEvidence ', '$researchID')";
-                            echo "Inserted into table $query";
+                            
                             if (mysqli_query($conn, $query)) {
                                 //Impact evidence added sucessfully
-                                echo ("<br> Impact Evidence Added");
+                                echo ("<br> Impact Evidence Added !");
+
+                                //get Impact ID as last inserted ID into database
+                                $impactID = mysqli_insert_id($conn);
+    
+                                if ($impactID != 0) {
+                                    require_once '../php/uploadImpactFile.php';
+                                    uploadImpactFile(intval($impactID), intval($_POST['impFileUpload']), intval($_POST['project']), $conn);
+                                } else {
+                                    echo "<br> Error adding the file";
+                                }
+                                
                 
                             } else {
-                                echo "Error adding the project!";
+                                echo "Error adding the Impact Evidence";
                             }
                         }
                         
