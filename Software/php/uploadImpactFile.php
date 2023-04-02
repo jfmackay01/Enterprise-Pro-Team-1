@@ -1,89 +1,96 @@
 <?php 
 
-require '../db/dbconnect.php';
-/*require '../php/fileUploadValidation.php';*/
+function uploadImpactFile($iFileName, $researchID, $conn) {
 
-$errors = array();
-//upload impact project form to database 
-if (isset($_POST)) { //only continue if form used POST method
+    //connection with database
+    require '../db/dbconnect.php';
 
-    $file = $_FILES['impFileUpload'];
-    $fileName = $_FILES['impFileUpload']['name'];
-    $fileTmpName = $_FILES['impFileUpload']['tmp_name'];
-    $fileSize = $_FILES['impFileUpload']['size'];
-    $fileError= $_FILES['impFileUpload']['error'];
-    $fileType = $_FILES['impFileUpload']['type'];
-    
-    $impactID = $_POST['project']['project_ID'];
+    $errors = array();
+    //upload impact project form to database 
+    if (isset($_POST)) { //only continue if form used POST method
+        echo "inside uploadImpactFile";
+        $file = $_FILES['impFileUpload'];
+        $iFileName = $_FILES['impFileUpload']['name'];
+        $fileSize = $_FILES['impFileUpload']['size'];
+        $fileError= $_FILES['impFileUpload']['error'];
 
-    //variable for file extension
-    $fileExt = explode('.', $fileName);
-    //making sure that extension is in lowercase letters
-    $fileActualExt = strtolower(end($fileExt));
+        $impactActivity = $_POST['impactActivity'];
+        $impactEvidence = $_POST['impactEvidence'];
+       
+        echo "got all the variables";
 
-    //allowed extensions of files
-    $allowed = array('jpg', 'jpeg', 'pdf', 'png', 'txt', 'docx', 'xml');
+        //variable for file extension
+        $fileExt = explode('.', $iFileName);
+        //making sure that extension is in lowercase letters
+        $fileActualExt = strtolower(end($fileExt));
 
-    if (!empty($fileName)) {
-            
-        //checking if right extension is uploaded
-        if (in_array($fileActualExt, $allowed)){
-            //error handling
-            if ($fileError === 0) {
-                //max file size 50 mb 
-                if ($fileSize < 50000) {
-                    
-                    $fileDestination = '../upload/';
-                    $targetFilePath = $fileDestination . $fileName;
+        //allowed extensions of files
+        $allowed = array('jpg', 'jpeg', 'pdf', 'png', 'txt', 'docx', 'xml');
 
-                    //get project ID from selection bar
-                    $query = "SELECT impactID FROM impact_records WHERE researchID IN
-                    (SELECT projectID FROM research_project WHERE projectID = $id)";
-                    
-                    $result = mysqli_query ($conn, $query);
-                    $check = mysqli_fetch_assoc($result);
+        if (!empty($iFileName)) {
+            echo "   file not empty   ";
+            //checking if right extension is uploaded
+            if (in_array($fileActualExt, $allowed)){
+                //error handling
+                if ($fileError === 0) {
+                    //max file size 50 mb 
+                    if ($fileSize < 50000) {
+                        echo "correct size  ";
 
-                    if (!$check) {
-                        array_push($errors, "Error getting the project details");
-                    }
+                        $fileDestination = '../upload/';
+                        $targetFilePath = $fileDestination . $iFileName;
 
-                    if($result->num_rows >0) {
-                    
-                        //upload file to database
-                        if(move_uploaded_file($fileName, $targetFilePath)) {
-                            $insert = $db->$query("INSERT into impact_files(iFileName, impactID) VALUES ('$fileName', '$id')");
-                    
-                        
-                            if($insert) {
-                                echo "File uploaded sucessfully!";
-                            } else {
-                                echo "File upload failed!";
-                            }
-                        }  else {
-                            echo "There was an error uploading your file.";
+
+                        //get project ID from selection bar
+                        $query = "SELECT * FROM impact_record WHERE researchID = $researchID 
+                        AND impactActivity = $impactActivity AND impactEvidence = $impactEvidence";
+                         echo " impfile upload $file  imp activity $impactActivity  imp evidence $impactEvidence  ";
+                        $result = mysqli_query ($conn, $query);
+                        $check = mysqli_fetch_assoc($result);
+                        echo "impact ID $impactID   ";
+                        if (!$check) {
+                            array_push($errors, "Error getting the project details");
                         }
 
+                        echo " check done ";
+                        if($result->num_rows >0) {
+                            echo "showing the results  ";
+                             
+                            //upload file to database
+                            if(move_uploaded_file($iFileName, $targetFilePath)) {
+                                $insert = $db->$query("INSERT into impact_files(impactID, iFileName,) VALUES ('$impactID', '$iFileName')");
+                        
+                                if($insert) {
+                                    echo "File uploaded sucessfully!";
+                                } else {
+                                    echo "File upload failed!";
+                                }
+                            }  else {
+                                echo "There was an error uploading your file.";
+                            }
+
+                        }
+                        else {
+                            echo "This Impact Evidence doesn't exist.";
+                        }
                     }
                     else {
-                        echo "Your file is over the file size limit (max 500mb)!";
+                        "Your file is over the file size limit (max 500mb)";
                     }
+
                 }
                 else {
-                    "There was an error with uploading your file!";
+                    echo "You cannot upload files of this type!";
                 }
-
             }
+                
             else {
-                echo "You cannot upload files of this type!";
+                echo "No files have been chosen.";
             }
         }
-            
         else {
-            echo "No files have been chosen.";
+            echo ("Please select file.");
         }
-    }
-    else {
-        echo ("Please select file.");
     }
 }
 
