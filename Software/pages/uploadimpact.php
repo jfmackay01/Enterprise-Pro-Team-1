@@ -27,7 +27,7 @@ session_start();
     <div class="container-fluid2">
         <div class="container">
             <div class="formBox">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <div class="row">
                         <h3>Impact Record</h3>
                         <div class="row">
@@ -56,7 +56,8 @@ session_start();
                             </div>
                         </div>
 
-                        <input type="file" name="impFileUpload">  
+                        <input type="file" name="impFileUpload">
+                    
                         <br> <br>
                     </div>
                   
@@ -64,14 +65,27 @@ session_start();
                         
                         <input value="Submit" type="submit" class="btn" name="Submit"> 
                     </div>
-                </form>
-                
+                      
                 <?php 
+             
                
-                if (isset($_POST['Submit'])) {
-                    require '../php/fileUploadValidation.php';
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                     if ($_POST['project'] != 0) {
+                  
+                        require_once '../php/fileUploadValidation.php';
+                        uploadImpactRecord(intval($_POST['impactActivity']), intval($_POST['impactEvidence']), intval($_POST['project']), $conn);
+                        require_once '../php/uploadImpactFile.php';
+                        uploadImpactFile(intval($_POST['impFileUpload']), intval($_POST['project']), $conn);
+                        
+                    }
+                     else{
+                        echo "Please select project!";
+                     }
+                     
                  }
                     ?>
+                </form>
+              
             </div>
         </div>
     </div>
