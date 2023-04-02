@@ -74,9 +74,7 @@ session_start();
                   
                         require_once '../php/fileUploadValidation.php';
                         uploadImpactRecord(intval($_POST['impactActivity']), intval($_POST['impactEvidence']), intval($_POST['project']), $conn);
-                        require_once '../php/uploadImpactFile.php';
-                        uploadImpactFile(intval($_POST['impFileUpload']), intval($_POST['project']), $conn);
-                        
+
                     }
                      else{
                         echo "Please select project!";
