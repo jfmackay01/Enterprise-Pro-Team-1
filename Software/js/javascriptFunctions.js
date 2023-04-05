@@ -62,5 +62,12 @@ function createItem() {
     }
 } 
 
-
+function confirmDeleteUser(){
+    if(confirm("This will delete this user and associated data. Are you sure?")){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
