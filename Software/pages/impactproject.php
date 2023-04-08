@@ -70,7 +70,7 @@ session_start();
                </div>
                <img src="https://i.imgur.com/ouOvbhj.png" width="45" height="31">
                <div class="clickhere">
-                  <a href="../pages/viewAllImpact.php">
+                  <a href="viewAllImpact.php">
                      <h3>Click Here</h3>
                   </a>
                </div>
