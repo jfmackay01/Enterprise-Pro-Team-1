@@ -134,7 +134,7 @@ function uploadResearchProject() {
             
             //if selected yes on grants
             if ($grants_radio == 1) {
-                //insert into table grants given values
+                //insert into table research_grant given values
                 $sql = "INSERT INTO research_grant(amount, dateGiven, givenBy) VALUES ('$grants_amount', '$grants_dateGiven', '$grants_givenBy')";
                 if(mysqli_query($conn, $sql)) {
                     echo "<p>Grant added succesfully!</p>";
@@ -186,10 +186,11 @@ function uploadResearchProject() {
                         //Research Project added sucessfully
                         echo ("<p> Research Project added!</p>");
 
-                      //get Impact ID as last inserted ID into database
+                      //get project ID as last inserted ID into database
                         $projectID = mysqli_insert_id($conn);
 
                         if ($projectID !=0 ) {
+                            //upload file to research_file table with corresponding project ID
                             require_once '../php/uploadResearchFile.php';
                             uploadResearchFile($projectID, $_FILES['researchFileUpload'], $conn);
                         } else {
@@ -215,10 +216,12 @@ function uploadResearchProject() {
                     if (mysqli_query($conn, $query)) {
                         //Research Project added sucessfully
                         echo ("<p> Research Project added!</p>");
-                        //get Impact ID as last inserted ID into database
+                        //get project ID as last inserted ID into database
                         $projectID = mysqli_insert_id($conn);
 
                         if ($projectID !=0 ) {
+                            
+                             //upload file to research_file table with corresponding project ID
                             require_once '../php/uploadResearchFile.php';
                             uploadResearchFile($projectID, $_FILES['researchFileUpload'], $conn);
                         } else {
