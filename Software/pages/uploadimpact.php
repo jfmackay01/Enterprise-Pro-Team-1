@@ -55,23 +55,26 @@ session_start();
                                 <textarea class="input" name="impactEvidence"></textarea> 
                             </div>
                         </div>
-
+                        <!-- file selection -->
                         <input type="file" name="impFileUpload">
                     
                         <br> <br>
                     </div>
                   
                     <div class="click-btn">
-                        
+                         <!-- submission button -->
                         <input value="Submit" type="submit" class="btn" name="Submit"> 
                     </div>
                       
                     <?php 
                 
                 
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+                         //continue if used method is post
+                                 
+                        //if project has been selected
                         if ($_POST['project'] != 0) {
-                    
+                            //validate the form and upload file to database
                             require_once '../php/impactUploadValidation.php';
                             uploadImpactRecord($_POST['impactActivity'], $_POST['impactEvidence'], $_POST['project'], $conn);
 

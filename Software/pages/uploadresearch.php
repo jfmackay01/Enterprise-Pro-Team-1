@@ -25,7 +25,7 @@ session_start();
         <div class="container-fluid2">
             <div class="container">
                 <div class="formBox">
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <div class="row">
                             <h3>Associated Project</h3>
                             <br><br>
@@ -35,7 +35,7 @@ session_start();
                                     <div class="inputBox">
                                         <br>
                                         <div class="inputText">Project Title</div>
-                                        <input type="text" name="projectTitle" class="input">
+                                        <input type="text" name="projectTitle" class="input" placeholder >
                                      </div>
                                 </div>
                             
@@ -53,10 +53,11 @@ session_start();
                                     <div class="inputBox">
                                         <div class="inputText">Associated Grants </div>
                                         <br>
-                                        <form>
+                                        
                                             <!-- yes or no buttons for associated grants -->
-                                            <input type="radio" name="grants_radio" id="grants_radio1" onclick="showGrants(1)"/> Yes <br>
-                                            <input type="radio" name="grants_radio" id="grants_radio2" onclick="showGrants(2)"/> No <br>
+                                            <input type="hidden" name="grants_radio" value="0">
+                                            <input type="radio" name="grants_radio" value="1" id="grants_radio1" onclick="showGrants(1)"/> Yes <br>
+                                            <input type="radio" name="grants_radio" value="2" id="grants_radio2" onclick="showGrants(2)"/> No <br>
                                             <br>
                                             <!-- displaying the form after clicking on YES button -->
                                             <div id="grants_radio1Div" class="grants" style="display:none;"> 
@@ -66,7 +67,7 @@ session_start();
                                                 <input type="text" name="grants_givenBy" class="input"placeholder="Given by...">
                                             </div>
 
-                                        </form>
+                                      
                                     </div>
                                 </div>
                             
@@ -111,7 +112,7 @@ session_start();
                                 </div>
                                 <!-- Potential UOA-->
                                 <div>  
-                                    <input type='hidden' name='userID' value='<?php echo $userID ?>'>
+                                    <input type='hidden' name='userID' value='<?php echo $_SESSION['admin'] ?>'>
                                 
                                     <?php
                                     //drop down menu for UOA selection
@@ -120,7 +121,7 @@ session_start();
                                     ?>
                                 </div>
                                 <div>  
-                                    <input type='hidden' name='userID' value='<?php echo $userID ?>'>
+                                    <input type='hidden' name='userID' value='<?php echo $_SESSION['admin'] ?>'>
                                 
                                     <?php
                                     //drop down menu for UOA selection
@@ -204,14 +205,13 @@ session_start();
                         </div>
                         <?php
                             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        
+                                //continue if used method is post
+                                 
+                                //validate the form and upload file to database
                                 require_once '../php/uploadResearchValidation.php';
                                 uploadResearchProject();
                             }
-                            else {
-
-                                echo $_SERVER["REQUEST_METHOD"];
-                            }
+                        
                         
                         ?>
                     </form>
