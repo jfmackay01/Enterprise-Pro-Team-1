@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2023 at 04:42 PM
+-- Generation Time: Apr 11, 2023 at 11:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -24,7 +24,7 @@ USE `impactevidenceplatform`;
 --
 -- Table structure for table `departments`
 --
--- Creation: Apr 04, 2023 at 10:58 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `departments`;
@@ -52,7 +52,7 @@ INSERT INTO `departments` (`departmentID`, `departmentName`) VALUES
 --
 -- Table structure for table `impact_files`
 --
--- Creation: Apr 04, 2023 at 10:58 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `impact_files`;
@@ -71,7 +71,7 @@ CREATE TABLE `impact_files` (
 --
 -- Table structure for table `impact_record`
 --
--- Creation: Apr 04, 2023 at 10:58 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `impact_record`;
@@ -104,7 +104,7 @@ INSERT INTO `impact_record` (`impactID`, `impactActivity`, `ImpactEvidence`, `re
 --
 -- Table structure for table `progress`
 --
--- Creation: Apr 04, 2023 at 10:58 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `progress`;
@@ -134,7 +134,7 @@ INSERT INTO `progress` (`progressID`, `progressStage`) VALUES
 --
 -- Table structure for table `project_allocations`
 --
--- Creation: Apr 04, 2023 at 10:58 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `project_allocations`;
@@ -172,14 +172,14 @@ INSERT INTO `project_allocations` (`userID`, `projectID`, `role`) VALUES
 --
 -- Table structure for table `research_files`
 --
--- Creation: Apr 04, 2023 at 10:58 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `research_files`;
 CREATE TABLE `research_files` (
   `rFileID` int(11) NOT NULL,
   `projectID` int(11) NOT NULL,
-  `rFileName` int(11) NOT NULL
+  `rFileName` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -193,7 +193,8 @@ CREATE TABLE `research_files` (
 --
 -- Table structure for table `research_grant`
 --
--- Creation: Apr 04, 2023 at 10:58 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
+-- Last update: Apr 11, 2023 at 09:39 AM
 --
 
 DROP TABLE IF EXISTS `research_grant`;
@@ -213,6 +214,7 @@ CREATE TABLE `research_grant` (
 --
 
 INSERT INTO `research_grant` (`grantID`, `amount`, `dateGiven`, `givenBy`) VALUES
+(0, '£0.00', '0000-00-00', 'N/A'),
 (1, '$10000', '2023-01-01', 'Test McTesterson');
 
 -- --------------------------------------------------------
@@ -220,8 +222,7 @@ INSERT INTO `research_grant` (`grantID`, `amount`, `dateGiven`, `givenBy`) VALUE
 --
 -- Table structure for table `research_project`
 --
--- Creation: Apr 04, 2023 at 10:59 AM
--- Last update: Apr 04, 2023 at 10:59 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `research_project`;
@@ -267,7 +268,7 @@ INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `pr
 --
 -- Table structure for table `uoa`
 --
--- Creation: Apr 04, 2023 at 10:58 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `uoa`;
@@ -327,7 +328,7 @@ INSERT INTO `uoa` (`uoaID`, `uoaTitle`) VALUES
 --
 -- Table structure for table `users`
 --
--- Creation: Apr 04, 2023 at 10:58 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -474,7 +475,7 @@ ALTER TABLE `research_files`
 -- AUTO_INCREMENT for table `research_grant`
 --
 ALTER TABLE `research_grant`
-  MODIFY `grantID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `grantID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `research_project`
