@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2023 at 03:49 PM
+-- Generation Time: Apr 11, 2023 at 11:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -14,6 +15,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `impactevidenceplatform`
 --
+DROP DATABASE IF EXISTS `impactevidenceplatform`;
 CREATE DATABASE IF NOT EXISTS `impactevidenceplatform` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `impactevidenceplatform`;
 
@@ -22,7 +24,7 @@ USE `impactevidenceplatform`;
 --
 -- Table structure for table `departments`
 --
--- Creation: Mar 07, 2023 at 11:23 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `departments`;
@@ -30,6 +32,10 @@ CREATE TABLE `departments` (
   `departmentID` tinyint(7) NOT NULL,
   `departmentName` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `departments`:
+--
 
 --
 -- Dumping data for table `departments`
@@ -46,7 +52,7 @@ INSERT INTO `departments` (`departmentID`, `departmentName`) VALUES
 --
 -- Table structure for table `impact_files`
 --
--- Creation: Mar 14, 2023 at 11:40 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `impact_files`;
@@ -56,12 +62,16 @@ CREATE TABLE `impact_files` (
   `iFileName` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELATIONSHIPS FOR TABLE `impact_files`:
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `impact_record`
 --
--- Creation: Mar 14, 2023 at 11:38 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `impact_record`;
@@ -71,6 +81,12 @@ CREATE TABLE `impact_record` (
   `ImpactEvidence` varchar(64) NOT NULL COMMENT 'Description of evidence provided',
   `researchID` int(11) NOT NULL COMMENT 'ID of related research project'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `impact_record`:
+--   `researchID`
+--       `research_project` -> `projectID`
+--
 
 --
 -- Dumping data for table `impact_record`
@@ -88,7 +104,7 @@ INSERT INTO `impact_record` (`impactID`, `impactActivity`, `ImpactEvidence`, `re
 --
 -- Table structure for table `progress`
 --
--- Creation: Mar 14, 2023 at 11:17 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `progress`;
@@ -96,6 +112,10 @@ CREATE TABLE `progress` (
   `progressID` tinyint(11) NOT NULL,
   `progressStage` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `progress`:
+--
 
 --
 -- Dumping data for table `progress`
@@ -114,7 +134,7 @@ INSERT INTO `progress` (`progressID`, `progressStage`) VALUES
 --
 -- Table structure for table `project_allocations`
 --
--- Creation: Mar 14, 2023 at 01:33 PM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `project_allocations`;
@@ -123,6 +143,14 @@ CREATE TABLE `project_allocations` (
   `projectID` int(11) NOT NULL,
   `role` tinyint(1) NOT NULL COMMENT '0 for collaborator, 1 for reviewer'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `project_allocations`:
+--   `projectID`
+--       `research_project` -> `projectID`
+--   `userID`
+--       `users` -> `userID`
+--
 
 --
 -- Dumping data for table `project_allocations`
@@ -144,22 +172,29 @@ INSERT INTO `project_allocations` (`userID`, `projectID`, `role`) VALUES
 --
 -- Table structure for table `research_files`
 --
--- Creation: Mar 14, 2023 at 11:32 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `research_files`;
 CREATE TABLE `research_files` (
   `rFileID` int(11) NOT NULL,
   `projectID` int(11) NOT NULL,
-  `rFileName` int(11) NOT NULL
+  `rFileName` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `research_files`:
+--   `projectID`
+--       `research_project` -> `projectID`
+--
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `research_grant`
 --
--- Creation: Mar 14, 2023 at 01:35 PM
+-- Creation: Apr 11, 2023 at 09:34 AM
+-- Last update: Apr 11, 2023 at 09:39 AM
 --
 
 DROP TABLE IF EXISTS `research_grant`;
@@ -171,10 +206,15 @@ CREATE TABLE `research_grant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- RELATIONSHIPS FOR TABLE `research_grant`:
+--
+
+--
 -- Dumping data for table `research_grant`
 --
 
 INSERT INTO `research_grant` (`grantID`, `amount`, `dateGiven`, `givenBy`) VALUES
+(0, '£0.00', '0000-00-00', 'N/A'),
 (1, '$10000', '2023-01-01', 'Test McTesterson');
 
 -- --------------------------------------------------------
@@ -182,7 +222,7 @@ INSERT INTO `research_grant` (`grantID`, `amount`, `dateGiven`, `givenBy`) VALUE
 --
 -- Table structure for table `research_project`
 --
--- Creation: Mar 14, 2023 at 06:19 PM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `research_project`;
@@ -202,24 +242,33 @@ CREATE TABLE `research_project` (
   `underpinnedResearch` varchar(64) DEFAULT NULL,
   `reach` varchar(64) DEFAULT NULL,
   `significance` varchar(32) DEFAULT NULL,
-  `quality` varchar(64) DEFAULT NULL
+  `quality` varchar(64) DEFAULT NULL,
+  `impactAssessment` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `research_project`:
+--   `grantID`
+--       `research_grant` -> `grantID`
+--   `departmentID`
+--       `departments` -> `departmentID`
+--
 
 --
 -- Dumping data for table `research_project`
 --
 
-INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `projectInvestigator`, `grantID`, `researchOutput`, `projectSummary`, `potentialUOA`, `impactProgress`, `notes`, `meetings`, `followup`, `underpinnedResearch`, `reach`, `significance`, `quality`) VALUES
-(1, 'Test Project', 1, 'Bob Bobson', 1, NULL, 'A test Project', 36, 4, 'test', NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Test Project 2', 2, 'Alice Anderson', NULL, NULL, NULL, 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Test Project 3', 3, 'Charlie Chaplin', NULL, NULL, 'A third test project', 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `projectInvestigator`, `grantID`, `researchOutput`, `projectSummary`, `potentialUOA`, `impactProgress`, `notes`, `meetings`, `followup`, `underpinnedResearch`, `reach`, `significance`, `quality`, `impactAssessment`) VALUES
+(1, 'Test Project', 1, 'Bob Bobson', 1, NULL, 'A test Project', 36, 4, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Test Project 2', 2, 'Alice Anderson', NULL, NULL, NULL, 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Test Project 3', 3, 'Charlie Chaplin', NULL, NULL, 'A third test project', 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `uoa`
 --
--- Creation: Mar 14, 2023 at 11:09 AM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `uoa`;
@@ -227,6 +276,10 @@ CREATE TABLE `uoa` (
   `uoaID` tinyint(4) NOT NULL,
   `uoaTitle` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `uoa`:
+--
 
 --
 -- Dumping data for table `uoa`
@@ -275,8 +328,7 @@ INSERT INTO `uoa` (`uoaID`, `uoaTitle`) VALUES
 --
 -- Table structure for table `users`
 --
--- Creation: Mar 24, 2023 at 01:43 PM
--- Last update: Mar 24, 2023 at 02:45 PM
+-- Creation: Apr 11, 2023 at 09:34 AM
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -288,6 +340,10 @@ CREATE TABLE `users` (
   `collab` tinyint(1) NOT NULL DEFAULT 0,
   `reviewer` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `users`:
+--
 
 --
 -- Dumping data for table `users`
@@ -419,7 +475,7 @@ ALTER TABLE `research_files`
 -- AUTO_INCREMENT for table `research_grant`
 --
 ALTER TABLE `research_grant`
-  MODIFY `grantID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `grantID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `research_project`
@@ -468,4 +524,5 @@ ALTER TABLE `research_files`
 ALTER TABLE `research_project`
   ADD CONSTRAINT `research_project_ibfk_1` FOREIGN KEY (`grantID`) REFERENCES `research_grant` (`grantID`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `research_project_ibfk_2` FOREIGN KEY (`departmentID`) REFERENCES `departments` (`departmentID`) ON DELETE CASCADE ON UPDATE CASCADE;
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;

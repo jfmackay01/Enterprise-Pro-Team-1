@@ -26,10 +26,16 @@ function showUser($userID, $conn)
             echo ("<br>");
             echo ("Reviewer");
         }
-        
+        echo("<br>");
     }
     if ($_SESSION['admin'] == true) {
-        require('../php/assignToProjectButton.php');
+        if(!$user['admin'])
+        {
+            require('../php/assignToProjectButton.php');
+        }
+        require('../php/deleteUserButton.php');
+        
     }
+    echo("<br>");
     return $user;
 }
