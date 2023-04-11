@@ -3,6 +3,7 @@
 //valdation of registration form
 function validateRegisterForm() {
     //array to held errors
+    window.alert("HI!")
     let errors = []
     //get information from form
     let password = document.forms["register"]["password"].value;
@@ -47,8 +48,19 @@ function validateRegisterForm() {
 //back button 
 /*	document.querySelector('.back-btn').addEventListener('click', function() {
 		window.history.back();
-	});*/
+	}); */
 
+    //show grants text fields 
+function showGrants(val) {
+
+    if (val ==1) {
+        document.getElementById('grants_radio1Div').style.display = 'block';
+        }
+    if (val==2) {
+        document.getElementById('grants_radio1Div').style.display = 'none';
+        }
+}
+ 
 //cookie acceptance
 
 
@@ -70,4 +82,5 @@ function confirmDeleteUser(){
         return false;
     }
 }
+
 
