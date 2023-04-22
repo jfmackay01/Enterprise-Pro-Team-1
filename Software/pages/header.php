@@ -14,18 +14,10 @@
       <div class="row">
          <div class="col-md-4">
             <div class="text">
-               <h1>
+               <h2>
                   <a href="home.php"> <img src="https://i.imgur.com/dJBWnfs.png" width="40" height="40"></a>
                   Impact Project Records
-               </h1>
-            </div>
-         </div>
-         <div class="col-md-4">
-            <div class="box">
-               <form id="form">
-                  <input type="search" name="q" placeholder="Search impact projects..">
-                  <button>⌕</button>
-               </form>
+               </h2>
             </div>
          </div>
          <div class="col-md-4">

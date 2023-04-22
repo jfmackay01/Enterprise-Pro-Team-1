@@ -31,5 +31,12 @@ session_start();
     ?>
     
 </body>
-
+<!---footer--->
+<div class="footer">
+        <div class="container">
+            <br><br><br>
+            <hr>
+            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+        </div>
+      </div>
 </html>

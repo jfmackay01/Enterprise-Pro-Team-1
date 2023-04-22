@@ -17,7 +17,7 @@ session_start();
 <!-- containter for form -->
     <div class="container4">
             <!-- back button -->
-            <a class="back-btn" href="resimpproject.php" >Back</a>
+            <a class="back-btn" href="projects.php" >Back</a>
             <h2>Upload Research Project</h2>
         </div>
 
@@ -223,6 +223,13 @@ session_start();
     </div>
 </body> 
 
-
+<!---footer--->
+<div class="footer">
+        <div class="container">
+            <br><br><br>
+            <hr>
+            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+        </div>
+      </div>
 
 </html>
