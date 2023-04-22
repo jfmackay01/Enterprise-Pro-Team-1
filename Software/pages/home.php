@@ -4,15 +4,18 @@
 <html>
    <head>
       
+     
+
       <?php
          require 'header.php';
          ?>
       
    </head>
 
-   
-
    <body>
+
+      <script src="../js/cookie.notice.min.js"></script>  
+
       <div class="welcome">
          <h1>
             Home Page
@@ -118,10 +121,7 @@
          </div>
       </div>
          
-             <!--Shows cookie acceptance box at bottom of screen, and does some javascript handling of storing if clicked or not locally-->
-             <div class="cookiesaccept">
-                <p>To use this website you must agree to use cookies. Press accept below to accept the usage of cookies.</p><button onclick="createItem()">Accept</button>
-            </div>
+            
                     
 
    </body>
