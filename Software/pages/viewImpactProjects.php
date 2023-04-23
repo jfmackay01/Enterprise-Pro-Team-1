@@ -14,7 +14,7 @@ session_start();
 <body>
     <div class="container4">
         <!-- back button -->
-        <a class="back-btn" href="impactproject.php" >Back</a>
+        <a class="back-btn" href="projects.php" >Back</a>
         <h2>Impact Project</h2>
     </div>
     <table width=100%> 
@@ -34,5 +34,13 @@ session_start();
         ?>
     </table>
 </body>
+<!---footer--->
+<div class="footer">
+        <div class="container">
+            <br><br><br>
+            <hr>
+            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+        </div>
+      </div>
 
 </html>
