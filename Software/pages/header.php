@@ -12,7 +12,7 @@
 
    <div class="container-fluid">
       <div class="row">
-         <div class="col-md-4">
+         <div class="col-md-6">
             <div class="text">
                <h2>
                   <a href="home.php"> <img src="https://i.imgur.com/dJBWnfs.png" width="40" height="40"></a>
@@ -20,7 +20,7 @@
                </h2>
             </div>
          </div>
-         <div class="col-md-4">
+         <div class="col-md-6">
             <div class="profile">
                 <img src="https://i.imgur.com/S8Zjwpq.png">
                <?php
