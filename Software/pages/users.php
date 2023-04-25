@@ -22,50 +22,44 @@ session_start();
 
 <body>
 
-   <div class="container4">
+    <div class="container4">
         <!-- back button -->
-        <a class="back-btn" href="home.php" >Back</a>
+        <a class="back-btn" href="home.php">Back</a>
         <h2>Users</h2>
 
-        <!-- filter by option -->
-        <select class="filter-select">
-			<option value="all">Filter By</option>
-			<option value="alphabet">Alphabet</option>
-			<option value="department">Department</option>
-		</select>
+        <!-- filter by role -->
+
+        <div>
+            <?php
+            include("../php/userFilterSelection.php")
+            ?>
+        </div>
+
+
+
+
     </div>
 
     <section class="container3">
-   <!--      <fieldset>
-            <legend>Select a Collaborator</legend>
 
-            <form method="post" action="answering.php">
-                <?php foreach ($options as $key => $value): ?>
-                    <label>
-                        <input type="radio" name="<?php echo $key; ?>" /><?php echo $value; ?><br />
-                    </label>
-                <?php endforeach; ?>
-                <input class="btn" name= "submit" type="submit" value="Submit">
-            </form>
-        </fieldset>-->
 
     </section>
     <?php
-        if (isset($_SESSION["logon"]) && $_SESSION['admin'] == true){
-            require '../php/showAllUsers.php';
-        }
-        else{
-            header('location: ../pages/home.php');
-        }
-        ?>
+    if (isset($_SESSION["logon"]) && $_SESSION['admin'] == true) {
+        require '../php/showAllUsers.php';
+    } else {
+        header('location: ../pages/home.php');
+    }
+    ?>
 
 </body>
 <!---footer--->
 <div class="footer">
-        <div class="container">
-            <br><br><br>
-            <hr>
-            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
-        </div>
-      </div>
+    <div class="container">
+        <br><br><br>
+        <hr>
+        <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+    </div>
+</div>
+
 </html>

@@ -17,6 +17,14 @@
             <!-- back button -->
             <a class="back-btn" href="home.php" >Back</a>
             <h2>Research Projects</h2>
+
+                    <!-- filter by department -->
+
+        <div>
+            <?php
+            include("../php/projectFilterSortSelection.php")
+            ?>
+        </div>
     </div>
 
     <!-- table with research projects-->
