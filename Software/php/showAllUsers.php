@@ -1,23 +1,39 @@
 <?php
 
-    
-    //connect to database
-    require '../db/dbconnect.php';
-    require'../php/showUser.php';
-    //set up SQL Query to select the userID of all collaborators
-    $query = "SELECT userID FROM USERS";
 
-    //perform query
-    $result = mysqli_query($conn, $query);
 
-    if ($result->num_rows > 0) { 
-        
-        while ($row = $result->fetch_assoc()){
-            $id = $row['userID'];
-            showUser($id, $conn);
+echo nl2br("\n");
+//connect to database
+require '../db/dbconnect.php';
+require '../php/showUser.php';
+
+//set up SQL Query to select the userID of users according to filter
+
+
+//default query if no filter
+$query = "SELECT userID FROM USERS";
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+    if (isset($_GET["userFilter"])) {
+        $filter = $_GET["userFilter"];
+        if ($filter != "all"){
+            $query = $query . " WHERE " . $filter . " = 1";
         }
-
+        
     }
+} 
 
-    $conn -> close();
-?>
+
+//perform query
+$result = mysqli_query($conn, $query);
+
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+        $id = $row['userID'];
+        showUser($id, $conn);
+    }
+}
+
+$conn->close();
