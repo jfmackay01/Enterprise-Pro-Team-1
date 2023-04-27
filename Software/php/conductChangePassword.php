@@ -20,10 +20,6 @@ function conductChangePassword($userID, $oldPass, $newPass)
         $hash = $check['password'];
         if (password_verify($oldPass, $hash)) {
             echo 'Password verified';
-            
-        } else {
-            echo 'Incorrect Password';
-        }            //hash new password
             $options = ['cost' => 12];
             $hashPass = password_hash($newPass, PASSWORD_BCRYPT, $options);
 
@@ -35,6 +31,10 @@ function conductChangePassword($userID, $oldPass, $newPass)
                 echo ("Password Changed Successfully");
                 
             }
+        } else {
+            echo 'Incorrect Password';
+        }            //hash new password
+            
     } else {
         echo 'Error Accessing Database';
         return;

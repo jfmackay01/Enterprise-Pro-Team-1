@@ -8,7 +8,7 @@
     //unassign user from all projects
 
     $query = "DELETE FROM project_allocations WHERE userID = $userID";
-    echo( $query);
+    
 
     $result = mysqli_query($conn, $query);
 
@@ -17,13 +17,12 @@
 
         $query = "DELETE FROM users WHERE userID = $userID";
 
-        echo $query;
-
+        
 
         $result = mysqli_query($conn, $query);
 
         if ($result){
-            echo"yay";
+
         }
         else{
             array_push($errors,"Error deleting user");

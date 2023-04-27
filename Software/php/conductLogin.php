@@ -56,10 +56,10 @@ if (isset($_POST)) { //only continue if form used POST method
                 header('location: ../pages/home.php');
                
             } else {
-                array_push($errors, "Incorrect Email or Password - p");
+                array_push($errors, "Incorrect Email or Password");
             }
         } else {
-            array_push($errors, "Incorrect Email or Password Found - u");
+            array_push($errors, "Incorrect Email or Password Found");
         }
     }
     if (count($errors) != 0) {

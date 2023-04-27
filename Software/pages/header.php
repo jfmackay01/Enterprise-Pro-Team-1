@@ -12,23 +12,15 @@
 
    <div class="container-fluid">
       <div class="row">
-         <div class="col-md-4">
+         <div class="col-md-6">
             <div class="text">
-               <h1>
+               <h2>
                   <a href="home.php"> <img src="https://i.imgur.com/dJBWnfs.png" width="40" height="40"></a>
                   Impact Project Records
-               </h1>
+               </h2>
             </div>
          </div>
-         <div class="col-md-4">
-            <div class="box">
-               <form id="form">
-                  <input type="search" name="q" placeholder="Search impact projects..">
-                  <button>⌕</button>
-               </form>
-            </div>
-         </div>
-         <div class="col-md-4">
+         <div class="col-md-6">
             <div class="profile">
                 <img src="https://i.imgur.com/S8Zjwpq.png">
                <?php

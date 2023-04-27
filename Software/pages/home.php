@@ -13,6 +13,9 @@
    
 
    <body>
+
+      <script src="../js/cookie.notice.min.js"></script>  
+
       <div class="welcome">
          <h1>
             Home Page
@@ -45,11 +48,11 @@
             <div class='col-lg-6'>
                <div class='p-3 border bg-light'>
                   <div class='imp'>
-                     <h2> Master Spreadsheet </h2>
+                     <h2> Users </h2>
                   </div>
                   <img src='https://i.imgur.com/665Hakv.png'>
                   <div class='clickhere'>
-                     <a href='spreadsheet.php'>
+                     <a href='users.php'>
                         <h3>Click Here</h3>
                      </a>
                   </div>
@@ -59,70 +62,36 @@
          }
       }
    ?>
-            <div class="col-lg-6">
+
+            <div class="col-lg-6 mx-auto">
                <div class="p-3 border bg-light">
                   <div class="col">
                      <h2> Research Project Records </h2>
                   </div>
                   <img src="https://i.imgur.com/jQKhmPH.png">
                   <div class="clickhere">
-                     <a href="resimpproject.php">
+                     <a href="projects.php">
                         <h3>Click Here</h3>
                      </a>
                   </div>
                </div>
             </div>
-            <div class="col-lg-6">
-               <div class="p-3 border bg-light">
-                  <div class="Reviewers">
-                     <h2> Impact Records </h2>
-                  </div>
-                  <img src="https://i.imgur.com/uosGz2q.png">
-                  <div class="clickhere">
-                     <a href="impactproject.php">
-                        <h3>Click Here</h3>
-                     </a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-6">
-               <div class="p-3 border bg-light">
-                  <div class="col">
-                     <h2> Collaborators </h2>
-                  </div>
-                  <img src="https://i.imgur.com/XN4tpER.png">
-                  <div class="clickhere">
 
-                     <a href="collab.php">
+        
 
-                        <h3>Click Here</h3>
-                     </a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-6">
-               <div class="p-3 border bg-light">
-                  <div class="Reviewers">
-                     <h2> Reviewers </h2>
-                  </div>
-                  <img src="https://i.imgur.com/USd6B2v.png">
-                  <div class="clickhere">
-
-                     <a href="rev.php">
-
-                        <h3>Click Here</h3>
-                     </a>
-                  </div>
-               </div>
-            </div>
          </div>
       </div>
          
-             <!--Shows cookie acceptance box at bottom of screen, and does some javascript handling of storing if clicked or not locally-->
-             <div class="cookiesaccept">
-                <p>To use this website you must agree to use cookies. Press accept below to accept the usage of cookies.</p><button onclick="createItem()">Accept</button>
-            </div>
+            
                     
 
    </body>
+   <!---footer--->
+<div class="footer">
+        <div class="container">
+            <br><br><br>
+            <hr>
+            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+        </div>
+      </div>
 </html>
