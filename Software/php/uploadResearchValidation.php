@@ -37,30 +37,8 @@ function uploadResearchProject()
         $significance = $_POST['projectSummary'];
         $quality = $_POST['quality'];
 
-
-
-
-
-
-        ////////////////////////////////////////////////////
-        echo $grants_radio;
-
-
         //set boolean for if a grant is given
         $grantGiven = ($grants_radio == 1);
-
-
-
-
-
-
-
-
-
-
-
-
-        //////////////////////////////////////////////
 
 
         //all text fields and all options must be filled/sellected
