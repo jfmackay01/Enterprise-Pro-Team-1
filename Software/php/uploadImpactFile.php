@@ -44,8 +44,9 @@ function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
                             $iFileName = $name. $i . '.' . $ext;
                         }
 
-                        //whole path to the destination file
-                        $fileDestination = $_SERVER['DOCUMENT_ROOT'].'/Software/php/uploads/';
+                        //path to the destination file
+                        //$fileDestination = $_SERVER['DOCUMENT_ROOT'].'/Software/php/uploads/';
+                        $fileDestination = "../php/uploads";
                         $targetFilePath = $fileDestination . $iFileName;
 
                         //if there is no errors, file is valid and tmp 
@@ -71,7 +72,7 @@ function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
                         }
                     }
                     else {
-                        echo "Your file is over the file size limit (max 500mb)";
+                        echo "Your file is over the file size limit (max 80mb)";
                         $isValidFile = false;
                     }
 
