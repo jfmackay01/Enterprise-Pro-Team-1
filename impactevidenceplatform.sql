@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2023 at 11:45 AM
+-- Generation Time: Apr 28, 2023 at 02:40 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -24,7 +24,7 @@ USE `impactevidenceplatform`;
 --
 -- Table structure for table `departments`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `departments`;
@@ -52,7 +52,7 @@ INSERT INTO `departments` (`departmentID`, `departmentName`) VALUES
 --
 -- Table structure for table `impact_files`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `impact_files`;
@@ -71,7 +71,7 @@ CREATE TABLE `impact_files` (
 --
 -- Table structure for table `impact_record`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `impact_record`;
@@ -104,7 +104,7 @@ INSERT INTO `impact_record` (`impactID`, `impactActivity`, `ImpactEvidence`, `re
 --
 -- Table structure for table `progress`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `progress`;
@@ -134,7 +134,7 @@ INSERT INTO `progress` (`progressID`, `progressStage`) VALUES
 --
 -- Table structure for table `project_allocations`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `project_allocations`;
@@ -172,7 +172,7 @@ INSERT INTO `project_allocations` (`userID`, `projectID`, `role`) VALUES
 --
 -- Table structure for table `research_files`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `research_files`;
@@ -193,13 +193,13 @@ CREATE TABLE `research_files` (
 --
 -- Table structure for table `research_grant`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
--- Last update: Apr 11, 2023 at 09:39 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `research_grant`;
 CREATE TABLE `research_grant` (
   `grantID` int(11) NOT NULL,
+  `projectID` int(11) NOT NULL,
   `amount` varchar(64) NOT NULL,
   `dateGiven` date NOT NULL,
   `givenBy` varchar(64) NOT NULL
@@ -213,16 +213,16 @@ CREATE TABLE `research_grant` (
 -- Dumping data for table `research_grant`
 --
 
-INSERT INTO `research_grant` (`grantID`, `amount`, `dateGiven`, `givenBy`) VALUES
-(0, '£0.00', '0000-00-00', 'N/A'),
-(1, '$10000', '2023-01-01', 'Test McTesterson');
+INSERT INTO `research_grant` (`grantID`, `projectID`, `amount`, `dateGiven`, `givenBy`) VALUES
+(0, 0, '£0.00', '0000-00-00', 'N/A'),
+(1, 1, '£10000', '2023-01-01', 'Test McTesterson');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `research_project`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `research_project`;
@@ -231,7 +231,7 @@ CREATE TABLE `research_project` (
   `projectTitle` varchar(32) NOT NULL,
   `departmentID` tinyint(7) NOT NULL,
   `projectInvestigator` varchar(64) NOT NULL,
-  `grantID` int(11) DEFAULT NULL,
+  `grantGiven` tinyint(1) NOT NULL,
   `researchOutput` varchar(64) DEFAULT NULL COMMENT 'Summary of the output of the paper',
   `projectSummary` varchar(64) DEFAULT NULL COMMENT 'Summary of project',
   `potentialUOA` tinyint(4) NOT NULL DEFAULT 36 COMMENT 'Foreign key of UOA',
@@ -248,8 +248,6 @@ CREATE TABLE `research_project` (
 
 --
 -- RELATIONSHIPS FOR TABLE `research_project`:
---   `grantID`
---       `research_grant` -> `grantID`
 --   `departmentID`
 --       `departments` -> `departmentID`
 --
@@ -258,17 +256,17 @@ CREATE TABLE `research_project` (
 -- Dumping data for table `research_project`
 --
 
-INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `projectInvestigator`, `grantID`, `researchOutput`, `projectSummary`, `potentialUOA`, `impactProgress`, `notes`, `meetings`, `followup`, `underpinnedResearch`, `reach`, `significance`, `quality`, `impactAssessment`) VALUES
+INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `projectInvestigator`, `grantGiven`, `researchOutput`, `projectSummary`, `potentialUOA`, `impactProgress`, `notes`, `meetings`, `followup`, `underpinnedResearch`, `reach`, `significance`, `quality`, `impactAssessment`) VALUES
 (1, 'Test Project', 1, 'Bob Bobson', 1, NULL, 'A test Project', 36, 4, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Test Project 2', 2, 'Alice Anderson', NULL, NULL, NULL, 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Test Project 3', 3, 'Charlie Chaplin', NULL, NULL, 'A third test project', 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(2, 'Test Project 2', 2, 'Alice Anderson', 0, NULL, NULL, 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Test Project 3', 3, 'Charlie Chaplin', 0, NULL, 'A third test project', 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `uoa`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `uoa`;
@@ -328,7 +326,7 @@ INSERT INTO `uoa` (`uoaID`, `uoaTitle`) VALUES
 --
 -- Table structure for table `users`
 --
--- Creation: Apr 11, 2023 at 09:34 AM
+-- Creation: Apr 28, 2023 at 12:40 PM
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -355,8 +353,8 @@ INSERT INTO `users` (`userID`, `email`, `password`, `admin`, `collab`, `reviewer
 (3, 'adminTest@email.com', '$2y$12$u.TZPfmx/jjz4Yz0AbKM5eeW4LWfIMd2.cIpTLKw3gxQJ6r0bVlT2', 1, 0, 0),
 (4, 'reviewTest1@email.com', '$2y$12$4hh8xEWJdXzj5kCG6di0LOZJBDg4/V4h96ynvndPgHpC9crB5mgKy', 0, 0, 1),
 (5, 'reviewTest2@email.com', '$2y$12$.rgObDwpTACF2HBSOuGDSek91/mNJe31eeBHim.SooQsSST283bF6', 0, 0, 1),
-(6, 'collabTest1@email.com', '$2y$12$i0A98SGRqI/bLnhl.rnoxO3oyQVBm/szxv0YAVyy6/Hbsic9sB33m', 0, 1, 0),
-(7, 'collabTest2@email.com', '$2y$12$/ZhuPi.fey/m688hZaSZDeTX95zYAtQECm6s9Q0eZOyIvNS8XJVw.', 0, 1, 0),
+(6, 'collabTest1@email.com', '$2y$12$wgIgMuVODtiVHjck/S2X9u2LC5Mwxl9WYqFmIkSMlif1H/4y7uUoW', 0, 1, 0),
+(7, 'collabTest2@email.com', '$2y$12$bzTP8c1.V3MwJrmXKFFcOuDgc.dAW/DRSRsvzd2UYSdA4Gynf8M52', 0, 1, 0),
 (8, 'reviewTest3@email.com', '$2y$12$218vu8BuIOSg4Oa6Ozt6cef/wD95TchuAxPpfH/9Pz0rh7d591f0m', 0, 0, 1),
 (9, 'test3@email.com', '$2y$12$YMsKD5xfUiB4QFFGIzx9xeswgrIPAdl2vJVUBMwCB2i7j.9JJwE1K', 0, 0, 0),
 (10, 'test4@email.com', '$2y$12$uge3.kQZlne/AXEixwguTux46HQabxu2Uc5Inij9mPcdteYxQSa0m', 0, 0, 0);
@@ -419,7 +417,6 @@ ALTER TABLE `research_grant`
 --
 ALTER TABLE `research_project`
   ADD PRIMARY KEY (`projectID`),
-  ADD KEY `grantID` (`grantID`),
   ADD KEY `departmentID` (`departmentID`),
   ADD KEY `potentialUOA` (`potentialUOA`),
   ADD KEY `impactProgress` (`impactProgress`);
@@ -475,7 +472,7 @@ ALTER TABLE `research_files`
 -- AUTO_INCREMENT for table `research_grant`
 --
 ALTER TABLE `research_grant`
-  MODIFY `grantID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `grantID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `research_project`
@@ -522,7 +519,6 @@ ALTER TABLE `research_files`
 -- Constraints for table `research_project`
 --
 ALTER TABLE `research_project`
-  ADD CONSTRAINT `research_project_ibfk_1` FOREIGN KEY (`grantID`) REFERENCES `research_grant` (`grantID`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `research_project_ibfk_2` FOREIGN KEY (`departmentID`) REFERENCES `departments` (`departmentID`) ON DELETE CASCADE ON UPDATE CASCADE;
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
