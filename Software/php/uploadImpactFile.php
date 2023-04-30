@@ -46,6 +46,7 @@ function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
 
                         // path to the destination file
                         $fileDestination = '../php/uploads';
+
                         $targetFilePath = $fileDestination . $iFileName;
 
                         //if there is no errors, file is valid and tmp 

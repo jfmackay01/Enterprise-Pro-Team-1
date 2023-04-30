@@ -5,6 +5,7 @@
     <option value = "reviewer"> Reviewers </option>
     <option value = "collab"> Collaborator </option>
     <option value= "admin"> Admin </option> 
+    <option value= "none"> No Role </option> 
 </select>
     
 

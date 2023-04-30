@@ -22,10 +22,10 @@
     <!-- table with research projects-->
     <table width=100%>
         <tr>
-            <td> Project name </td>
-            <td> Summary</td>
-            <td> Project Investigator </td>
-            <td> Department </td>
+            <th> Project name </th>
+            <th> Summary</th>
+            <th> Project Investigator </th>
+            <th> Department </th>
     <?php
     //if logged in then show assigned projects
             if (isset($_SESSION["logon"])){
