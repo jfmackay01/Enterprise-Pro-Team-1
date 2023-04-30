@@ -46,7 +46,7 @@ function uploadResearchFile($projectID, $rFileName, $conn) {
                         }
 
                         //whole path to the destination file
-                        $fileDestination = $_SERVER['DOCUMENT_ROOT'].'/Software/php/uploads/';
+                        $fileDestination = '../php/uploads/';
                         $targetFilePath = $fileDestination . $rFileName;
                    
                         //if there is no errors, file is valid and tmp 
@@ -65,7 +65,7 @@ function uploadResearchFile($projectID, $rFileName, $conn) {
                             }  else {
                                 echo "There was an error uploading your file.";
                             }
-                            
+                        
                         }
                         else {
                             echo "This Research Project doesn't exist.";
