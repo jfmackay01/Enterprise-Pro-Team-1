@@ -32,8 +32,9 @@ function showUser($userID, $conn)
         if(!$user['admin'])
         {
             require('../php/assignToProjectButton.php');
+            require('../php/deleteUserButton.php');
         }
-        require('../php/deleteUserButton.php');
+        
         
     }
     echo("<br>");
