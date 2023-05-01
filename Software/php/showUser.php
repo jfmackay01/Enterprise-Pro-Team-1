@@ -28,29 +28,17 @@
                 echo ("Reviewer");
             }
             echo ("<br>");
-        }
-        if ($_SESSION['admin'] == true) {
-            if (!$user['admin']) {
-                require('../php/assignToProjectButton.php');
+
+
+
+            if ($_SESSION['admin'] == true) {
+                if (!$user['admin']) {
+                    require('../php/assignToProjectButton.php');
+                    require('../php/deleteUserButton.php');
+                }
             }
-            require('../php/deleteUserButton.php');
+            echo ("<br>");
+            return $user;
         }
-        echo ("<br>");
-        return $user;
     }
-
-    if ($_SESSION['admin'] == true) {
-        if(!$user['admin'])
-        {
-            require('../php/assignToProjectButton.php');
-            require('../php/deleteUserButton.php');
-        }
-        
-        
-    }
-    echo("<br>");
-    return $user;
-}
-
-
     ?>
