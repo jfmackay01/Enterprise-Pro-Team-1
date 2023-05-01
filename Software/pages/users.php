@@ -2,7 +2,6 @@
 session_start();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +11,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Users</title>
-    <?php
-    require 'header.php';
-    ?>
-    <!-- css link -->
-    <link rel="stylesheet" href="../css/standard.css">
 
+    <?php require 'header.php'; ?>
+
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="../css/standard.css">
 </head>
 
 <body>
@@ -34,23 +32,23 @@ session_start();
             include("../php/userFilterSelection.php")
             ?>
         </div>
-
-
-
-
     </div>
 
-    <section class="container3">
 
+    <div class="container5">
+        <div class="content">
 
-    </section>
-    <?php
-    if (isset($_SESSION["logon"]) && $_SESSION['admin'] == true) {
-        require '../php/showAllUsers.php';
-    } else {
-        header('location: ../pages/home.php');
-    }
-    ?>
+            <?php
+            if (isset($_SESSION["logon"]) && $_SESSION['admin'] == true) {
+                require '../php/showAllUsers.php';
+            } else {
+                header('location: ../pages/home.php');
+            }
+            ?>
+        </div>
+    </div>
+    </div>
+
 
 </body>
 <!---footer--->
@@ -61,5 +59,6 @@ session_start();
         <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
     </div>
 </div>
+
 
 </html>
