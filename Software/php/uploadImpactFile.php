@@ -23,7 +23,7 @@ function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
         $fileActualExt = strtolower(end($fileExt));
 
         //allowed extensions of files
-        $allowed = array('jpg', 'jpeg', 'pdf', 'png', 'txt', 'docx', 'xml');
+        $allowed = array('jpg', 'jpeg', 'pdf', 'png', 'txt', 'docx', 'ppt', 'xls', 'doc');
 
         if (!empty($iFileName)) {
             //checking if right extension is uploaded
@@ -44,9 +44,9 @@ function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
                             $iFileName = $name. $i . '.' . $ext;
                         }
 
-                        //path to the destination file
-                        //$fileDestination = $_SERVER['DOCUMENT_ROOT'].'/Software/php/uploads/';
-                        $fileDestination = "../php/uploads/";
+                        // path to the destination file
+                        $fileDestination = '../php/uploads';
+
                         $targetFilePath = $fileDestination . $iFileName;
 
                         //if there is no errors, file is valid and tmp 
@@ -54,21 +54,23 @@ function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
 
                             //upload file to database
                             if(move_uploaded_file($fileTmpName, $targetFilePath)) {
-
+                            
                                 $sql="INSERT into impact_files(impactID, iFileName) VALUES ('$impID', '$iFileName')";
-                         
+                        
+                                
                                 if(mysqli_query($conn, $sql)) {
-                                    echo "  File uploaded sucessfully!";
+                                    echo "File uploaded sucessfully!";
                                 } else {
                                     echo "File upload failed!";
                                 }
-                            }  else {
+                            }
+                            else {
                                 echo "There was an error uploading your file.";
                             }
-                            
+                        
                         }
                         else {
-                            echo "This Impact Evidence doesn't exist.";
+                            echo "Error adding the file!";
                         }
                     }
                     else {
@@ -84,7 +86,7 @@ function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
             }
                 
             else {
-                echo "No files have been chosen.";
+                echo ("No files have been chosen.");
                 $isValidFile = false;
             }
         }
