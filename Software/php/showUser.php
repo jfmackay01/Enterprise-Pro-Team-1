@@ -39,4 +39,18 @@
         return $user;
     }
 
+    if ($_SESSION['admin'] == true) {
+        if(!$user['admin'])
+        {
+            require('../php/assignToProjectButton.php');
+            require('../php/deleteUserButton.php');
+        }
+        
+        
+    }
+    echo("<br>");
+    return $user;
+}
+
+
     ?>
