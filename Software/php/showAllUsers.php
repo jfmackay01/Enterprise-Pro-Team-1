@@ -1,39 +1,41 @@
 <?php
-
-
-
-echo nl2br("\n");
-//connect to database
 require '../db/dbconnect.php';
 require '../php/showUser.php';
 
-//set up SQL Query to select the userID of users according to filter
-
-
-//default query if no filter
+// Set up SQL Query to select the userID of users according to filter
+// Default query if no filter
 $query = "SELECT userID FROM USERS";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
     if (isset($_GET["userFilter"])) {
         $filter = $_GET["userFilter"];
-        if ($filter != "all"){
+
+        if ($filter == "none"){
+            $query = $query . " WHERE admin = 0 AND collab = 0 AND reviewer = 0";
+        }
+        else if ($filter != "all"){
+
             $query = $query . " WHERE " . $filter . " = 1";
         }
-        
-    }
-} 
-
-
-//perform query
-$result = mysqli_query($conn, $query);
-
-if ($result->num_rows > 0) {
-
-    while ($row = $result->fetch_assoc()) {
-        $id = $row['userID'];
-        showUser($id, $conn);
     }
 }
 
+// Perform query
+$result = mysqli_query($conn, $query);
+?>
+
+<div class="row">
+    <?php while ($row = $result->fetch_assoc()): ?>
+    <?php $id = $row['userID']; ?>
+    <div class="col-md-6 col-lg-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <?php showUser($id, $conn); ?>
+            </div>
+        </div>
+    </div>
+    <?php endwhile; ?>
+</div>
+
+<?php
 $conn->close();

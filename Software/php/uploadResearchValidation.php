@@ -1,15 +1,20 @@
 <?php
-ini_set ('error_reporting', E_ALL); ini_set ('display_errors', 1); ini_set ('display_startup_errors', 1);
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
-function uploadResearchProject() {
+function uploadResearchProject()
+{
 
     //connect to database
     require '../db/dbconnect.php';
 
     $errors = array();
     $noError = true;
-  
-    if (isset($_POST)) {    
+
+    if (isset($_POST)) {
+
+
 
         //get all variables from the template
         $projectTitle = $_POST['projectTitle'];
@@ -31,23 +36,27 @@ function uploadResearchProject() {
         $reach = $_POST['reach'];
         $significance = $_POST['projectSummary'];
         $quality = $_POST['quality'];
-       
+
+        //set boolean for if a grant is given
+        $grantGiven = ($grants_radio == 1);
+
+
         //all text fields and all options must be filled/sellected
         if (empty($projectTitle)) {
             array_push($errors, "Project title is required");
             echo "<p>Project title is required</p>";
-          }
+        }
 
         if (empty($projectInvestigator)) {
             array_push($errors, "Project investigator is required");
             echo "<p>Project investigator is required</p>";
         }
-        
+
         if ($grants_radio == 0) {
             array_push($errors, "Grants details required");
             echo "<p>Grants details required</p>";
         }
-        
+
         if ($grants_radio == 1) {
             if (strlen($grants_dateGiven) == 0) {
                 array_push($errors, "Grant date details required");
@@ -66,9 +75,8 @@ function uploadResearchProject() {
                 echo "<p> Grant given by details required</p>";
                 $noError = false;
             }
-     
+
             $noError = true;
-            
         }
 
         if ($faculty == 0) {
@@ -129,113 +137,78 @@ function uploadResearchProject() {
             echo "<p>Please select file!</p>";
         }
 
-         //if no errors add to database
+        //if no errors add to database
         if (count($errors) == 0 && $noError) {
-            
-            //if selected yes on grants
-            if ($grants_radio == 1) {
-                //insert into table research_grant given values
-                $sql = "INSERT INTO research_grant(amount, dateGiven, givenBy) VALUES ('$grants_amount', '$grants_dateGiven', '$grants_givenBy')";
-                if(mysqli_query($conn, $sql)) {
-                    echo "<p>Grant added succesfully!</p>";
+        }
+
+        //get faculty id
+        $query = "SELECT * FROM departments WHERE departmentID = $faculty";
+        $result = mysqli_query($conn, $query);
+        $check = mysqli_fetch_assoc($result);
+        if (!$check) {
+            array_push($errors, "Error getting the faculty details");
+        }
+
+        //get UOA id
+        $query = "SELECT * FROM uoa WHERE uoaID = $UOA";
+        $result = mysqli_query($conn, $query);
+        $check = mysqli_fetch_assoc($result);
+        if (!$check) {
+            array_push($errors, "Error getting the UOA details");
+        }
+
+        //get progress id
+        $query = "SELECT * FROM progress WHERE progressID = $progress";
+        $result = mysqli_query($conn, $query);
+        $check = mysqli_fetch_assoc($result);
+        if (!$check) {
+            array_push($errors, "Error getting the progress details");
+        }
+        // if there is no errors
+        if (count($errors) == 0) {
+
+
+            //sql statement to add data to research_project table
+            $query = "INSERT INTO research_project (projectTitle, departmentID, projectInvestigator, 
+                                    grantGiven, researchOutput, projectSummary, potentialUOA, impactProgress, notes, meetings, 
+                                    followup, underpinnedResearch, reach, significance, quality) VALUES ('$projectTitle', 
+                                    '$faculty', '$projectInvestigator', '$grantGiven', '$researchOutput', '$projectSummary',
+                                    '$UOA','$progress', '$notes', '$meetings', '$followUp', '$underpinnedResearch','$reach',
+                                    '$significance', '$quality')";
+
+
+
+
+            if (mysqli_query($conn, $query)) {
+                //Research Project added sucessfully
+                echo ("<p> Research Project added!</p>");
+
+                //get project ID as last inserted ID into database
+                $projectID = mysqli_insert_id($conn);
+
+                if ($projectID != 0) {
+                    //upload file to research_file table with corresponding project ID
+                    require_once '../php/uploadResearchFile.php';
+                    uploadResearchFile($projectID, $_FILES['researchFileUpload'], $conn);
+
+
+                    //if there is a grant given insert into database
+                    if ($grantGiven) {
+                        //insert into table research_grant given values
+                        $sql = "INSERT INTO research_grant(projectID, amount, dateGiven, givenBy) VALUES ('$projectID' ,'$grants_amount', '$grants_dateGiven', '$grants_givenBy')";
+                        if (mysqli_query($conn, $sql)) {
+                            echo "<p>Grant added succesfully!</p>";
+                        } else {
+                            echo "Adding grant's details failed!";
+                        }
+                    }
                 } else {
-                    echo "Adding grant's details failed!";
+                    echo "<br> Error adding the file";
                 }
-            }
-            //get lastest inserted id for grant id 
-            if ($grants_radio == 1) {
-                $grantID = mysqli_insert_id($conn);
-            } 
-
-            //get faculty id
-            $query = "SELECT * FROM departments WHERE departmentID = $faculty";
-            $result = mysqli_query ($conn, $query);
-            $check = mysqli_fetch_assoc($result);
-            if (!$check) {
-                array_push($errors, "Error getting the faculty details");
-            }
-             
-            //get UOA id
-            $query = "SELECT * FROM uoa WHERE uoaID = $UOA";
-            $result = mysqli_query ($conn, $query);
-            $check = mysqli_fetch_assoc($result);
-            if (!$check) {
-                array_push($errors, "Error getting the UOA details");
-            }
-
-             //get progress id
-             $query = "SELECT * FROM progress WHERE progressID = $progress";
-             $result = mysqli_query ($conn, $query);
-             $check = mysqli_fetch_assoc($result);
-             if (!$check) {
-                 array_push($errors, "Error getting the progress details");
-             }
-             // if there is no errors
-            if (count($errors) == 0) {
-                if ($grants_radio == 1) {
-                    //sql statement to add data to research_project table, if selected yes on grant details
-                    $query = "INSERT INTO research_project (projectTitle, departmentID, projectInvestigator, 
-                    grantID, researchOutput, projectSummary, potentialUOA, impactProgress, notes, meetings, 
-                    followup, underpinnedResearch, reach, significance, quality) VALUES ('$projectTitle', 
-                    '$faculty', '$projectInvestigator', '$grantID', '$researchOutput', '$projectSummary',
-                    '$UOA','$progress', '$notes', '$meetings', '$followUp', '$underpinnedResearch','$reach',
-                    '$significance', '$quality')";
-
-
-                    if (mysqli_query($conn, $query)) {
-                        //Research Project added sucessfully
-                        echo ("<p> Research Project added!</p>");
-
-                      //get project ID as last inserted ID into database
-                        $projectID = mysqli_insert_id($conn);
-
-                        if ($projectID !=0 ) {
-                            //upload file to research_file table with corresponding project ID
-                            require_once '../php/uploadResearchFile.php';
-                            uploadResearchFile($projectID, $_FILES['researchFileUpload'], $conn);
-                        } else {
-                            echo "<br> Error adding the file";
-                        }
-                        
-
-                    }
-                    else {
-                        echo "Error adding the Research Project";
-                    }
-
-                } elseif ($grants_radio != 1){
-                    //sql statement to add data to research_project table, if selected no on grant details
-
-                    $query = "INSERT INTO research_project (projectTitle, departmentID, projectInvestigator, 
-                    grantID, researchOutput, projectSummary, potentialUOA, impactProgress, notes, meetings, 
-                    followup, underpinnedResearch, reach, significance, quality) VALUES ('$projectTitle', 
-                    '$faculty', '$projectInvestigator', NULL, '$researchOutput', '$projectSummary',
-                    '$UOA','$progress', '$notes', '$meetings', '$followUp', '$underpinnedResearch','$reach',
-                    '$significance', '$quality')";
-                    
-                    if (mysqli_query($conn, $query)) {
-                        //Research Project added sucessfully
-                        echo ("<p> Research Project added!</p>");
-                        //get project ID as last inserted ID into database
-                        $projectID = mysqli_insert_id($conn);
-
-                        if ($projectID !=0 ) {
-                            
-                             //upload file to research_file table with corresponding project ID
-                            require_once '../php/uploadResearchFile.php';
-                            uploadResearchFile($projectID, $_FILES['researchFileUpload'], $conn);
-                        } else {
-                            echo "<br> Error adding the file";
-                        }
-                    }
-                    else {
-                        echo "Error adding the Research Project";
-                    } 
-                }
-
+            } else {
+                echo "Error adding the Research Project";
             }
 
         }
     }
 }
-        

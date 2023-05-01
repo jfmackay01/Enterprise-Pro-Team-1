@@ -34,7 +34,7 @@
 
     <label for="projectSort">Sort By: </label>
     <select id="projectSort" name="projectSort">
-        <option value = "non">None</option>
+        <option value = "none">None</option>
         <option value = "projectTitle">Project Title</option>
         <option value = "departmentID">Department</option>
         <option value = "projectInvestigator">Investigator</option>
