@@ -30,6 +30,7 @@ session_start();
 <!-- table with research projects-->
 <section class="container7">
     <table width=100%>
+
         <thead>
             <tr>
                 <th> Project name </td>

@@ -9,7 +9,12 @@ $query = "SELECT userID FROM USERS";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET["userFilter"])) {
         $filter = $_GET["userFilter"];
-        if ($filter != "all") {
+
+        if ($filter == "none"){
+            $query = $query . " WHERE admin = 0 AND collab = 0 AND reviewer = 0";
+        }
+        else if ($filter != "all"){
+
             $query = $query . " WHERE " . $filter . " = 1";
         }
     }

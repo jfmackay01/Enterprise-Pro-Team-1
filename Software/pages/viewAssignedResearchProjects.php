@@ -47,12 +47,9 @@ if (isset($_SESSION["logon"])) {
             $sort = $_GET["projectSort"];
 
             if ($sort != "none"){
-                /*if ($sort == "departmentID"){
-
-                }*/
+ 
 
                 $query = $query . " ORDER BY ". $sort;
-                echo $query;
             }
 
         }

@@ -30,6 +30,8 @@ function showResearchProject($projectID, $conn)
             
             echo ("<td> ");
             require("../php/viewImpactButton.php"); 
+            echo("</td><td>");
+            require("../php/projectDetailsButton.php");
             echo ("</td>");
             echo ("</tr>");
         }
