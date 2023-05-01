@@ -13,6 +13,7 @@ session_start();
 
 </body>
 <!-- page title -->
+
 <div class="container4">
     <!-- back button -->
     <a class="back-btn" href="home.php">Back</a>
@@ -24,6 +25,7 @@ session_start();
         <?php
         include("../php/projectFilterSortSelection.php")
         ?>
+
     </div>
 </div>
 
@@ -31,7 +33,9 @@ session_start();
 <section class="container7">
     <table width=100%>
 
-        <thead>
+
+            
+                    <thead>
             <tr>
                 <th> Project name </td>
                 <th> Summary</td>
@@ -50,21 +54,60 @@ session_start();
         }
 
         ?>
-    </table>
-</section>
-<div class="col-md-4">
-    <div class="p-3 border bg-light">
-        <div class="col">
-            <h4> Upload Research Project </h4>
-        </div>
-        <img src="https://i.imgur.com/jQKhmPH.png">
-        <div class="clickhere">
-            <a href="uploadresearch.php">
-                <h3>Click Here</h3>
-            </a>
-        </div>
-    </div>
-</div>
+ 
+    </table>    
+        <?php
+            if (isset($_SESSION["logon"])) {
+               if ($_SESSION["admin"] == true) {//if admin show upload research project options
+                  echo("
+                     <div class='col-md-4'>
+                        <div class='p-3 border bg-light'>
+                            <div class='col'>
+                                <h4> Upload Research Project </h4>
+                            </div>
+                            <img src='https://i.imgur.com/jQKhmPH.png'>
+                            <div class='clickhere'>
+                                <a href='uploadresearch.php'>
+                                    <h3>Click Here</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='col-md-4'>
+                        <div class='p-3 border bg-light'>
+                            <div class='col'>
+                                <h4> Upload more files for selected Research Project </h4>
+                            </div>
+                            <img src='https://i.imgur.com/jQKhmPH.png'>
+                            <div class='clickhere'>
+                                <a href='uploadMoreResearchFiles.php'>
+                                    <h3>Click Here</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='col-md-4'>
+                        <div class='p-3 border bg-light'>
+                            <div class='col'>
+                                <h4> Upload more grants </h4>
+                            </div>
+                            <img src='https://i.imgur.com/jQKhmPH.png'>
+                            <div class='clickhere'>
+                                <a href='uploadGrants.php'>
+                                    <h3>Click Here</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    ");
+               }
+            }
+        ?>
+
+
+
 </body>
 <!---footer--->
 <div class="footer">
