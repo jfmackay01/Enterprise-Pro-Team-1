@@ -29,24 +29,25 @@ session_start();
     <section>
         <div class="container-fluid2">
             <div class="container">
-                <div class="formBox">
+                <div class="container4">
                     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <div class="row">
                             <h3>Associated Project</h3>
-                            <br><br>
-                            <div class="row">
+                            <br>
+                            <div class="container4">
 
                                 <?php
                                 //drop down menu for project selection
                                 require("../php/projectDropDown.php");
 
                                 ?>
-                                <br>
+
+                                <br><br>
                                 <input type="file" name="researchFileUpload">
 
-                                <br> <br>
-
+                                <br><br>
                             </div>
+
                         </div>
                         <!-- submission button -->
 
