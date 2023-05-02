@@ -24,7 +24,7 @@ session_start();
 
     <div class="container3">
         <!-- back button -->
-        <a class="back-btn" href="impactproject.php">Back</a>
+        <a class="back-btn" href="viewImpactProjects.php">Back</a>
         <h2>Upload Impact Project</h2>
     </div>
 
