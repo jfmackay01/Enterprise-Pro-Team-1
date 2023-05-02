@@ -13,7 +13,7 @@
    
 
    <body>
-
+   
       <script src="../js/cookie.notice.min.js"></script>  
 
       <div class="welcome">
@@ -37,7 +37,7 @@
                   <div class='res'>
                      <h2> Dashboard </h2>
                   </div>
-                  <img src='https://i.imgur.com/iGPyZYp.png'>
+                  <img src='../img/laptop.png'>
                   <div class='clickhere'>
                      <a href='dashboard.php'>
                         <h3>Click Here</h3>
@@ -50,7 +50,7 @@
                   <div class='imp'>
                      <h2> Users </h2>
                   </div>
-                  <img src='https://i.imgur.com/665Hakv.png'>
+                  <img src='../img/userhome.png'>
                   <div class='clickhere'>
                      <a href='users.php'>
                         <h3>Click Here</h3>
@@ -68,7 +68,7 @@
                   <div class="col">
                      <h2> Research Project Records </h2>
                   </div>
-                  <img src="https://i.imgur.com/jQKhmPH.png">
+                  <img src="../img/pr.png">
                   <div class="clickhere">
                      <a href="projects.php">
                         <h3>Click Here</h3>
