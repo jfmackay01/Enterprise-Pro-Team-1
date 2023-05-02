@@ -1,9 +1,15 @@
 <?php
 session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <link rel="stylesheet" type="text/css" href="../css/standard.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>projects</title>
 
     <?php
     require 'header.php';
@@ -14,7 +20,7 @@ session_start();
 </body>
 <!-- page title -->
 
-<div class="container4">
+<div class="container3">
     <!-- back button -->
     <a class="back-btn" href="home.php">Back</a>
     <h2>Research Projects</h2>
@@ -30,12 +36,12 @@ session_start();
 </div>
 
 <!-- table with research projects-->
-<section class="container7">
+<section class="container5">
     <table width=100%>
 
 
-            
-                    <thead>
+
+        <thead>
             <tr>
                 <th> Project name </td>
                 <th> Summary</td>
@@ -54,12 +60,12 @@ session_start();
         }
 
         ?>
- 
-    </table>    
-        <?php
-            if (isset($_SESSION["logon"])) {
-               if ($_SESSION["admin"] == true) {//if admin show upload research project options
-                  echo("
+
+    </table>
+    <?php
+    if (isset($_SESSION["logon"])) {
+        if ($_SESSION["admin"] == true) { //if admin show upload research project options
+            echo ("
                      <div class='col-md-4'>
                         <div class='p-3 border bg-light'>
                             <div class='col'>
@@ -102,20 +108,20 @@ session_start();
                         </div>
                     </div>
                     ");
-               }
-            }
-        ?>
+        }
+    }
+    ?>
 
 
 
-</body>
-<!---footer--->
-<div class="footer">
-    <div class="container">
-        <br><br><br>
-        <hr>
-        <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+    </body>
+    <!---footer--->
+    <div class="footer">
+        <div class="container">
+            <br><br><br>
+            <hr>
+            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+        </div>
     </div>
-</div>
 
 </html>

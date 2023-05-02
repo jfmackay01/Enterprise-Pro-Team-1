@@ -1,11 +1,16 @@
 <?php
 session_start();
 ?>
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
    <link rel="stylesheet" type="text/css" href="../css/standard.css">
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Impact Project</title>
+
    <!-- Standard Page Header -->
    <?php
    require 'header.php';
@@ -16,10 +21,10 @@ session_start();
 
 <body>
 
-<div class="container4">
+   <div class="container3">
       <!-- back button -->
-      <a class="back-btn" href="home.php" > Back </a>
-         <h2>Impact Records</h2>
+      <a class="back-btn" href="home.php"> Back </a>
+      <h2>Impact Records</h2>
    </div>
 
    <br><br>
@@ -81,10 +86,11 @@ session_start();
 </body>
 <!---footer--->
 <div class="footer">
-        <div class="container">
-            <br><br><br>
-            <hr>
-            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
-        </div>
-      </div>
+   <div class="container">
+      <br><br><br>
+      <hr>
+      <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+   </div>
+</div>
+
 </html>

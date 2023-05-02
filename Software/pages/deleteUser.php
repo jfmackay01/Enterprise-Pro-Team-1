@@ -1,9 +1,15 @@
 <?php
 session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <link rel="stylesheet" type="text/css" href="../css/standard.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Delete User</title>
 
     <?php
     require 'header.php';
@@ -14,19 +20,19 @@ session_start();
 
 
 <body>
-<h1>Attempting to delete user. Do not refresh page.</h1>
+    <h1>Attempting to delete user. Do not refresh page.</h1>
 
-<?php
+    <?php
     require_once('..//php/conductDeleteUser.php')
-?>
+    ?>
 </body>
 <!---footer--->
 <div class="footer">
-        <div class="container">
-            <br><br><br>
-            <hr>
-            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
-        </div>
-      </div>
+    <div class="container">
+        <br><br><br>
+        <hr>
+        <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+    </div>
+</div>
 
 </html>
