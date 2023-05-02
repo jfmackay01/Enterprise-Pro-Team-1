@@ -1,9 +1,16 @@
 <?php
 session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>project</title>
+
 
     <?php
     require 'header.php';
@@ -14,7 +21,7 @@ session_start();
 </body>
 <!-- page title -->
 
-<div class="container4">
+<div class="container3">
     <!-- back button -->
     <a class="back-btn" href="home.php">Back</a>
     <h2>Research Projects</h2>
@@ -30,7 +37,7 @@ session_start();
 </div>
 
 <!-- table with research projects-->
-<section class="container7">
+<section class="container6">
     <table width=100%>
 
 

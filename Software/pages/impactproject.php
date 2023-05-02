@@ -1,10 +1,17 @@
 <?php
 session_start();
 ?>
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Impact project</title>
+
+
    <link rel="stylesheet" type="text/css" href="../css/standard.css">
    <!-- Standard Page Header -->
    <?php
@@ -16,7 +23,7 @@ session_start();
 
 <body>
 
-<div class="container4">
+<div class="container3">
       <!-- back button -->
       <a class="back-btn" href="home.php" > Back </a>
          <h2>Impact Records</h2>
@@ -42,7 +49,7 @@ session_start();
                <div class="res">
                   <h2> Edit Impact Project</h2>
                </div>
-               <img src="../img/laptop.png">
+               <img src="https://i.imgur.com/iGPyZYp.png">
                <div class="clickhere">
                   <a href="#Edit">
                      <h3>Click Here</h3>
@@ -55,7 +62,7 @@ session_start();
                <div class="col">
                   <h2> Upload Impact Project </h2>
                </div>
-               <img src="../img/pr.png">
+               <img src="https://i.imgur.com/jQKhmPH.png">
                <div class="clickhere">
                   <a href="uploadimpact.php">
                      <h3>Click Here</h3>
@@ -68,7 +75,7 @@ session_start();
                <div class="col">
                   <h2> View all Impact Project </h2>
                </div>
-               <img src="../img/view.png" width="45" height="31">
+               <img src="https://i.imgur.com/ouOvbhj.png" width="45" height="31">
                <div class="clickhere">
                   <a href="viewAllImpact.php">
                      <h3>Click Here</h3>

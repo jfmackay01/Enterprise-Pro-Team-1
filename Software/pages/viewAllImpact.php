@@ -1,9 +1,16 @@
 <?php
 session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>View all impact projects</title>
+
 
     <?php
     require 'header.php';
@@ -13,9 +20,9 @@ session_start();
 
 <body>
 
-    <div class="container4">
+    <div class="container3">
         <!-- back button -->
-        <a class="back-btn" href="impactproject.php" >Back</a>
+        <a class="back-btn" href="impactproject.php">Back</a>
         <h2>View all Impact Projects</h2>
     </div>
     <div>
@@ -31,7 +38,7 @@ session_start();
                 require_once("../db/dbconnect.php");
                 require_once("../php/showImpactProjects.php");
 
-        
+
 
                 if ($_SESSION["admin"] == true) {
 
@@ -52,19 +59,19 @@ session_start();
                 }
                 $conn->close();
             }
-            
+
             ?>
         </table>
     </div>
 </body>
 <!---footer--->
 <div class="footer">
-        <div class="container">
-            <br><br><br>
-            <hr>
-            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
-        </div>
-      </div>
+    <div class="container">
+        <br><br><br>
+        <hr>
+        <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+    </div>
+</div>
 
 
 </html>

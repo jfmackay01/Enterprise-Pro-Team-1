@@ -2,10 +2,16 @@
 session_start();
 ?>
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Upload Grants</title>
+
 <!-- Standard Page Header -->
     <?php
     require 'header.php';
@@ -15,7 +21,7 @@ session_start();
 
 <body>  
 <!-- containter for form -->
-    <div class="container4">
+    <div class="container3">
             <!-- back button -->
             <a class="back-btn" href="projects.php" >Back</a>
             <h2>Upload more grants </h2>

@@ -46,12 +46,11 @@ if (isset($_SESSION["logon"])) {
         if (isset($_GET["projectSort"])) {
             $sort = $_GET["projectSort"];
 
-            if ($sort != "none"){
- 
+            if ($sort != "none") {
 
-                $query = $query . " ORDER BY ". $sort;
+
+                $query = $query . " ORDER BY " . $sort;
             }
-
         }
     }
 

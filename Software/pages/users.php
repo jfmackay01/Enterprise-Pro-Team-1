@@ -20,7 +20,7 @@ session_start();
 
 <body>
 
-    <div class="container4">
+    <div class="container3">
         <!-- back button -->
         <a class="back-btn" href="home.php">Back</a>
         <h2>Users</h2>
@@ -35,7 +35,7 @@ session_start();
     </div>
 
 
-    <div class="container5">
+    <div class="container4">
         <div class="content">
 
             <?php

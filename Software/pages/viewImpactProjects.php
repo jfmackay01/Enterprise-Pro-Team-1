@@ -1,9 +1,16 @@
 <?php
 session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Impact project</title>
+
 
     <?php
     require 'header.php';
@@ -12,21 +19,21 @@ session_start();
 </head>
 
 <body>
-    <div class="container4">
+    <div class="container3">
         <!-- back button -->
-        <a class="back-btn" href="projects.php" >Back</a>
+        <a class="back-btn" href="projects.php">Back</a>
         <h2>Impact Project</h2>
     </div>
-    <table width=100%> 
+    <table width=100%>
         <!--table for impact content -->
         <tr>
             <th>Impact record name</th>
             <th>Impact record evidence</th>
             <th>Impact record file</th>
         </tr>
-        
+
         <?php
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $projectID = intval($_POST['projectID']);
@@ -38,37 +45,40 @@ session_start();
         ?>
 
     </table>
-     <!--download all files in zip -->
+    <!--download all files in zip -->
     <div class='col-md-4'>
         <form method="post" action="../php/downloadImpactZip.php">
-        <input type='hidden' name='project' value='
+            <input type='hidden' name='project' value='
         <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $projectID = intval($_POST['projectID']);
-            echo $projectID; }
+            echo $projectID;
+        }
         ?>'>
             <div class='p-3 border bg-light'>
                 <div class='col'>
                     <h4> Download all files in zip folder </h4>
                 </div>
-                <img src='../img/pr.png'>
+                <img src='https://i.imgur.com/jQKhmPH.png'>
                 <div class='clickhere'>
-                    <a><button type='submit' name='createzip'><h3>Click Here</h3></button></a>
+                    <a><button type='submit' name='createzip'>
+                            <h3>Click Here</h3>
+                        </button></a>
                 </div>
-            </div> 
-        </form>   
+            </div>
+        </form>
     </div>
     <br>
-     <!--upload impact evidence form -->
-    <?php 
+    <!--upload impact evidence form -->
+    <?php
     if (isset($_SESSION["logon"])) {
-        if ($_SESSION["admin"] == true || $_SESSION["collab"] == true ) {//if admin show upload impact project 
-           echo("
+        if ($_SESSION["admin"] == true || $_SESSION["collab"] == true) { //if admin show upload impact project 
+            echo ("
                 <div class='col-md-4'>
                     <div class='p-3 border bg-light'>
                         <div class='col'>
                             <h4> Upload Impact Evidence </h4>
                         </div>
-                        <img src='../img/pr.png'>
+                        <img src='https://i.imgur.com/jQKhmPH.png'>
                         <div class='clickhere'>
                             <a href='uploadimpact.php'>
                             <h3>Click Here</h3>
@@ -83,11 +93,11 @@ session_start();
 </body>
 <!---footer--->
 <div class="footer">
-        <div class="container">
-            <br><br><br>
-            <hr>
-            <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
-        </div>
-      </div>
+    <div class="container">
+        <br><br><br>
+        <hr>
+        <p class="creator">Team 1 Enterprise Pro 2023 - University of Bradford</p>
+    </div>
+</div>
 
 </html>
