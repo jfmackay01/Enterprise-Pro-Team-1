@@ -187,7 +187,7 @@ body{
 
 /*reviewers/collaborators page*/
 
-.container4 {
+.container3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -196,14 +196,14 @@ body{
   box-shadow: 0 2px 5px var(--gray1);
 }
 
-.container4 .back-btn {
+.container3 .back-btn {
   padding: 10px;
   border: none;
   cursor: pointer;
   margin-right: 20px;
 }
 
-.container4 h2 {
+.container3 h2 {
   font-size: 30px;
   font-weight: normal;
   margin: 0;
@@ -212,7 +212,7 @@ body{
 	text-align: center;
 }
 
-.container4 .filter-select {
+.container3 .filter-select {
   padding: 10px;
   background-color: var(--gray1);
   border: 1px solid var(--black2);
@@ -296,7 +296,7 @@ textarea{
 
 
 /* users.php */
-.container5 {
+.container4 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -304,26 +304,26 @@ textarea{
 
 /* projects.php */
 
-.container7 {
+.container5 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 
-.container7 {
+.container5 {
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 20px;
 }
 
-.container7 td, table th {
+.container5 td, table th {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-.container7 th {
+.container5 th {
   background-color: #f2f2f2;
   font-weight: bold;
   text-align: center;
