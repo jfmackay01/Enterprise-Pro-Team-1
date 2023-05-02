@@ -1,15 +1,9 @@
 <!--Drop Down Menu for All Projects if user is admin -->
-<br>
-<section>
-<label for="project">Select a project:</label> <br></br>
-
-</section>
+<label for="project"> Select a project:</label> <br></br>
 
 <select id="project" name="project">
-    
+
     <option value=0>Select A Research Project</option>
-
-
     <?php
     require_once("../db/dbconnect.php");
     if (isset($_SESSION["logon"])) {
@@ -29,11 +23,10 @@
         while ($row = $result->fetch_assoc()) {
             $id = $row['projectID'];
             $title = $row['projectTitle'];
-            echo ("<option value=" . $id . ">". $title ."</option>");
+            echo ("<option value=" . $id . ">" . $title . "</option>");
         }
     }
 
 
     ?>
 </select>
-<br>
