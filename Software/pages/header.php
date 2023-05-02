@@ -15,21 +15,21 @@
          <div class="col-md-6">
             <div class="text">
                <h2>
-                  <a href="home.php"> <img src="https://i.imgur.com/dJBWnfs.png" width="40" height="40"></a>
+                  <a href="home.php"> <img src="../img/home.png" width="40" height="40"></a>
                   Impact Project Records
                </h2>
             </div>
          </div>
          <div class="col-md-6">
             <div class="profile">
-                <img src="https://i.imgur.com/S8Zjwpq.png">
+                <img src="../img/uoblogo.png">
                <?php
                if (!isset($_SESSION["logon"])) { //if not logged on go to login page
                   if (!str_ends_with($_SERVER['REQUEST_URI'], "login.php") && !str_ends_with($_SERVER['REQUEST_URI'], "register.php")) { //otherwise show logoff button
                      header('location: ../pages/login.php');
                   }
                }
-               ?> <a href="../pages/userProfile.php"><img src="https://i.imgur.com/hFKDKMc.png" width="40" height="40"></a>
+               ?> <a href="../pages/userProfile.php"><img src="../img/login.png" width="40" height="40"></a>
             </div>
          </div>
       </div>
