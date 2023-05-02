@@ -1,7 +1,12 @@
 <!--Drop Down Menu for All Projects if user is admin -->
+<br>
+<section>
+<label for="project">Select a project:</label> <br></br>
 
-<label for="project">Select a project:</label> <br>
+</section>
+
 <select id="project" name="project">
+    
     <option value=0>Select A Research Project</option>
 
 
@@ -31,3 +36,4 @@
 
     ?>
 </select>
+<br>
