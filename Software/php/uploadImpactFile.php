@@ -45,7 +45,7 @@ function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
                         }
 
                         // path to the destination file
-                        $fileDestination = '../php/uploads';
+                        $fileDestination = '../php/uploads/';
 
                         $targetFilePath = $fileDestination . $iFileName;
 
