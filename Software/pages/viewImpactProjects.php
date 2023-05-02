@@ -50,7 +50,7 @@ session_start();
                 <div class='col'>
                     <h4> Download all files in zip folder </h4>
                 </div>
-                <img src='https://i.imgur.com/jQKhmPH.png'>
+                <img src='../img/pr.png'>
                 <div class='clickhere'>
                     <a><button type='submit' name='createzip'><h3>Click Here</h3></button></a>
                 </div>
@@ -68,7 +68,7 @@ session_start();
                         <div class='col'>
                             <h4> Upload Impact Evidence </h4>
                         </div>
-                        <img src='https://i.imgur.com/jQKhmPH.png'>
+                        <img src='../img/pr.png'>
                         <div class='clickhere'>
                             <a href='uploadimpact.php'>
                             <h3>Click Here</h3>

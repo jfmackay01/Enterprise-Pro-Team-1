@@ -42,7 +42,7 @@ session_start();
                <div class="res">
                   <h2> Edit Impact Project</h2>
                </div>
-               <img src="https://i.imgur.com/iGPyZYp.png">
+               <img src="../img/laptop.png">
                <div class="clickhere">
                   <a href="#Edit">
                      <h3>Click Here</h3>
@@ -55,7 +55,7 @@ session_start();
                <div class="col">
                   <h2> Upload Impact Project </h2>
                </div>
-               <img src="https://i.imgur.com/jQKhmPH.png">
+               <img src="../img/pr.png">
                <div class="clickhere">
                   <a href="uploadimpact.php">
                      <h3>Click Here</h3>
@@ -68,7 +68,7 @@ session_start();
                <div class="col">
                   <h2> View all Impact Project </h2>
                </div>
-               <img src="https://i.imgur.com/ouOvbhj.png" width="45" height="31">
+               <img src="../img/view.png" width="45" height="31">
                <div class="clickhere">
                   <a href="viewAllImpact.php">
                      <h3>Click Here</h3>
