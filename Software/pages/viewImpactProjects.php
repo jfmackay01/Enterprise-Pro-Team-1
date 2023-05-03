@@ -23,6 +23,8 @@ session_start();
             <th>Impact record name</th>
             <th>Impact record evidence</th>
             <th>Impact record file</th>
+            <th>Edit impact record </th>
+
         </tr>
         
         <?php
