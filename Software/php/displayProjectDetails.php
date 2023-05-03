@@ -2,6 +2,11 @@
    <!--Insert file management here-->
    <?php
 
+   require '../db/dbconnect.php';
+   if ($_SERVER['REQUEST_METHOD']== 'POST') {
+   $projectID = $_POST['projectID'];
+   }
+
     $query = "SELECT * FROM research_files WHERE projectID = $projectID";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
