@@ -7,11 +7,11 @@ session_start();
 
 <head>
     
-    <title>Upload Grants</title>
-    
     <?php
     require 'header.php';
     ?>
+    
+    <title>Upload Grants</title>
 
 </head>
 
