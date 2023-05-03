@@ -5,12 +5,12 @@ session_start();
 <html lang="en">
 
 <head>
-    
-    <title>projects</title>
-
+       
     <?php
     require 'header.php';
     ?>
+    
+    <title>projects</title>
 
 </head>
 
