@@ -22,6 +22,7 @@ session_start();
         //if form has been submitted conduct the update
         if (isset($_POST['validateEdit'])) {
             require_once '../php/editImpactValidation.php';
+            editImpact($impactID, $conn);
         } 
 
         //get previous details
@@ -30,7 +31,7 @@ session_start();
         if ($result->num_rows > 0) {
             if ($impact = mysqli_fetch_assoc($result)) {
                 $impactActivity = $impact['impactActivity'];
-                $impactEvidence = $impact['impactEvidence'];
+                $impactEvidence = $impact['ImpactEvidence'];
             }
         }
     }
