@@ -4,13 +4,13 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    
-    <title>Assign to Project</title>
+<head> 
 
     <?php
     require 'header.php';
     ?>
+    
+    <title>Assign to Project</title>
 
 </head>
 
