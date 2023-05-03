@@ -1,4 +1,62 @@
-   <!-- table with research projects-->
+
+   <!--Insert file management here-->
+   <?php
+
+    $query = "SELECT * FROM research_files WHERE projectID = $projectID";
+    $result = mysqli_query($conn, $query);
+    if ($result->num_rows > 0) {
+
+        echo nl2br("<table width=50%>
+                <tr>
+                <th> File Name </th>
+                 <th> Download Links</th> 
+                 </tr>");
+        while ($files = mysqli_fetch_assoc($result)) {
+
+            echo ("
+                        <tr>
+                        <td>" . $files['rFileName'] . "</td>
+                        <td> <a href = '../php/uploads/" . $files['rFileName'] . "' download> DOWNLOAD </a></td>
+                       </tr>"
+            );
+        }
+        echo ("\n
+        </table>");
+
+    }
+    ?>
+
+<!--download all files in zip -->
+<div class='col-md-4'>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <input type='hidden' name='projectID' value='<?php echo $projectID ?>'>
+            <div class='p-3 border bg-light'>
+                <div class='col'>
+                    <h4> Download all files in zip folder </h4>
+                </div>
+                <img src='https://i.imgur.com/jQKhmPH.png'>
+                <div class='clickhere'>
+                    <a><button type='submit' name='createzip'>
+                            <h3>Click Here</h3>
+                        </button></a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+
+    <?php
+    //if download as zip button clicked 
+    if (isset($_REQUEST['createzip'])) {
+        require "../php/downloadResearchZip.php";
+    }
+    ?>
+
+
+
+
+
+<!-- table with research projects-->
    <table width=100%>
        <tr>
            <th> Project name </th>
@@ -7,12 +65,7 @@
            <th> Department </th>
        </tr>
        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $projectID = $_POST["projectID"];
-        }
 
-
-        require "../db/dbconnect.php";
 
         $query = "SELECT * FROM research_project r, departments d, progress p, uoa u  WHERE r.projectID = $projectID AND r.departmentID = d.departmentID AND r.potentialUOA = u.uoaID AND r.impactProgress = p.progressID";
         $result = mysqli_query($conn, $query);
@@ -48,8 +101,8 @@
                 echo nl2br("<td>" . $projectTitle . " </td>"); //show name
                 //echo ('<br>');
                 echo ('<td>' . $projectSummary . "</td>"); //show summary
-                echo nl2br("<td>" . $projectInvestigator . "</td>");
-                echo nl2br("<td>" . $department . "</td>");
+                echo nl2br("<td>" . $projectInvestigator . "</td>"); //show PI
+                echo nl2br("<td>" . $department . "</td>"); //show department
                 echo ("</tr>");
 
 
@@ -64,9 +117,9 @@
                <tr>
                    <?php
 
-                    echo ("<td> $progress </td>");
+                    echo ("<td> $progress </td>"); //show progress
 
-                    echo ("<td> $uoa </td>");
+                    echo ("<td> $uoa </td>"); //show uoa
 
                     echo nl2br("<td> " . $meetings . " </td>"); //show meetings
 
@@ -80,13 +133,13 @@
        <?php
                 echo ("<tr>");
 
-                //echo ('<br>');
+                
                 echo ('<td> ' . $followup . "</td>"); //show followup
-                echo nl2br("<td> " . $underpinnedResearch . "</td>");
-                echo nl2br("<td> " . $reach . "</td>");
+                echo nl2br("<td> " . $underpinnedResearch . "</td>"); //show underpinnedResearch
+                echo nl2br("<td> " . $reach . "</td>"); //show reach
                 echo ("<td> ");
-                require("../php/viewImpactButton.php");
-                echo ("</td>");
+                require("../php/viewImpactButton.php"); //button to view impact records
+                echo ("</td></tr>");
             }
         }
 
@@ -99,7 +152,7 @@
            <th> </th>
        </tr>
        <?php
-        echo nl2br("<td> " . $significance . "</td>");
+        echo nl2br("<td> " . $significance . "</td>"); //show significance
         echo nl2br("<td> " . $quality . " </td>"); //show quality
         echo ('<td> ' . $impactAssessment . "</td>"); //show impact assessment               
 
@@ -113,12 +166,16 @@
                 <tr>
                 <th>Notes</th>
                 <tr>
-                    <td> " . $project['notes'] . " </td>
+                    <td colspan='4'> " . $project['notes'] . " </td>
                 </tr>"
             );
         }
 
         ?>
+
+
+
+
 
        <!--grants details-->
 
@@ -142,10 +199,10 @@
                     //print grant details
                     echo ("
                         <tr>
-                        <td>". $grant['grantID'] . "</td>
-                        <td>". $grant['dateGiven'] . "</td>
-                        <td>". $grant['amount'] . "</td>
-                        <td>". $grant['givenBy'] . "</td>
+                        <td>" . $grant['grantID'] . "</td>
+                        <td>" . $grant['dateGiven'] . "</td>
+                        <td>" . $grant['amount'] . "</td>
+                        <td>" . $grant['givenBy'] . "</td>
 
                        </tr>"
                     );
@@ -159,34 +216,4 @@
 
 
 
-   <!--Insert file management here--> 
 
-
-
-   <?php
-
-        $query = "SELECT * FROM research_files WHERE projectID = $projectID";
-        $result = mysqli_query($conn, $query);
-            if ($result->num_rows > 0) {
-
-                echo nl2br("<table width=50%>
-                <tr>
-                <th class = 'spaced' > File Name </th>
-                 <th> Download Links</th> 
-                 </tr>");
-                while ($files = mysqli_fetch_assoc($result)) {
-
-
-                    //print grant details
-                    echo ("
-                        <tr>
-                        <td>". $files ['rFileName'] . "</td>
-                        <td> <a href = '../php/uploads/".$files['rFileName']."' download> DOWNLOAD </a></td>
-                       </tr>"
-                    );
-                }
-                echo ("</table>");
-            }
-
-
-?>
