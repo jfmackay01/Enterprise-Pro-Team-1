@@ -18,10 +18,28 @@
     //Add options to drop down menu for each progress
     if ($result->num_rows > 0) {
 
+        //if editing project set default id
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['projectID'])){
+                $prog = $project['impactProgress'];
+            }
+            else{
+                $prog = 0;
+            }
+        }
+        else{
+            $prog =0;
+        }
+
+//print all progress stages and default if neccessary
         while ($row = $result->fetch_assoc()) {
             $id = $row['progressID'];
             $name = $row['progressStage'];
-            echo ("<option value=" . $id . ">". $name ."</option>");
+            echo ("<option value=" . $id);
+            if($id == $prog){
+                echo " selected";
+            }
+            echo( ">". $name ."</option>");
         }
     }
 

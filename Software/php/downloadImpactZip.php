@@ -1,8 +1,14 @@
 <?php
 
-
+require "../db/dbconnect.php";
 require "../php/createZip.php";
 require "../php/downloadZip.php";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $projectID = intval($_POST['projectID']);
+
+}
 
 //get files to download
 

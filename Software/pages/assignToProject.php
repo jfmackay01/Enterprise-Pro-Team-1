@@ -12,6 +12,12 @@ session_start();
 </head>
 
 </body>
+
+<div class="container4">
+            <!-- back button -->
+            <a class="back-btn" href="users.php" >Back</a>
+            <h2>Assign User to Project </h2>
+        </div>
 <?php
 
 //check we've come here through post method by a logged on user with admin

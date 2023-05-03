@@ -28,10 +28,10 @@ session_start();
         <?php
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+            //get wproject to show and show it
             $projectID = intval($_POST['projectID']);
-            require_once('../db/dbconnect.php');
-            require_once('../php/showImpactProjects.php');
+            require('../db/dbconnect.php');
+            require('../php/showImpactProjects.php');
             showImpactProjects($projectID, $conn);
         }
 
@@ -41,10 +41,8 @@ session_start();
      <!--download all files in zip -->
     <div class='col-md-4'>
         <form method="post" action="../php/downloadImpactZip.php">
-        <input type='hidden' name='project' value='
-        <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $projectID = intval($_POST['projectID']);
-            echo $projectID; }
+        <input type='hidden' name='projectID' value='
+        <?php echo $projectID;
         ?>'>
             <div class='p-3 border bg-light'>
                 <div class='col'>
@@ -52,7 +50,7 @@ session_start();
                 </div>
                 <img src='../img/pr.png'>
                 <div class='clickhere'>
-                    <a><button type='submit' name='createzip'><h3>Click Here</h3></button></a>
+                    <a><button class="click-btn" type='submit' name='createzip'><h3>Click Here</h3></button></a>
                 </div>
             </div> 
         </form>   
@@ -71,7 +69,7 @@ session_start();
                         <img src='../img/pr.png'>
                         <div class='clickhere'>
                             <a href='uploadimpact.php'>
-                            <h3>Click Here</h3>
+                            <h3 > Click Here</h3>
                             </a>
                         </div>
                     </div>    
