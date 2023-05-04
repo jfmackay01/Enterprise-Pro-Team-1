@@ -5,9 +5,7 @@ require '../db/dbconnect.php';
 
 $errors = array();
 
-if (isset($_POST)) {
-
-
+if (isset($_POST)) { // if used method is post, conduct edit project
 
     //get all variables from the template
     $projectTitle = $_POST['projectTitle'];
@@ -101,7 +99,7 @@ if (isset($_POST)) {
         followup = '$followUp', underpinnedResearch = '$underpinnedResearch', reach = '$reach', significance = '$significance', quality = '$quality', 
         impactAssessment = '$impactAssessment' where projectID = $projectID";
 
-        if (mysqli_query($conn, $query)) {
+        if (mysqli_query($conn, $query)) { //successful message printed out
             echo "Research Project Updated";
         } else {
             echo "Error updating the Research Project";

@@ -1,3 +1,4 @@
+<!--- form to filter users on users page--->
 <form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <label for="userFilter">Filter by:</label>
 <select id="userFilter" name="userFilter">
@@ -8,7 +9,5 @@
     <option value= "none"> No Role </option> 
 </select>
     
-
-
     <input value="Sort/Filter" type="submit" />
 </form>

@@ -1,4 +1,4 @@
-<!--Form -->
+<!--Form to pass projectID to next page-->
 <form method="post" action="../pages/projectDetails.php">
     
     <input type='hidden' name='projectID' value='<?php echo $projectID ?>'>

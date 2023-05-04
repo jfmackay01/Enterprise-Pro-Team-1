@@ -2,10 +2,10 @@
 <?php
 //get all files for the project and display thm in a table
 $query = "SELECT * FROM research_files WHERE projectID = $projectID";
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $query); //perform query
 if ($result->num_rows > 0) {
-
-    echo nl2br("<table width=50%>
+    
+    echo nl2br("<table width=50%> 
                 <tr>
                 <th> File Name </th>
                  <th> Download Links</th> 
@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
                         <td>" . $files['rFileName'] . "</td>
                         <td> <a href = '../php/uploads/" . $files['rFileName'] . "' download> DOWNLOAD </a></td>
                        </tr>"
-        );
+        ); //output file names
     }
     echo ("\n
         </table>");
@@ -64,7 +64,7 @@ if (isset($_REQUEST['createzip'])) {
     </tr>
     <?php
 
-
+    //set query to select all project details
     $query = "SELECT * FROM research_project r, departments d, progress p, uoa u  WHERE r.projectID = $projectID AND r.departmentID = d.departmentID AND r.potentialUOA = u.uoaID AND r.impactProgress = p.progressID";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
@@ -189,7 +189,7 @@ if (isset($_REQUEST['createzip'])) {
 
     <?php
 
-    if ($_SESSION["admin"]) {
+    if ($_SESSION["admin"]) { //if user is admin, show notes 
         echo ("
                 <tr>
                 <th>Notes</th>
@@ -209,7 +209,7 @@ if (isset($_REQUEST['createzip'])) {
 
     <?php
 
-    if ($project["grantGiven"]) {
+    if ($project["grantGiven"]) {  // if project has any grants assigned to it, show them in table
         echo ("<tr>
            <th>Grant ID</th>
            <th>Grant Date</th>

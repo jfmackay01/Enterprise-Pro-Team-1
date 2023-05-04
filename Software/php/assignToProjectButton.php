@@ -1,5 +1,5 @@
 <br>
-<!--Form -->
+<!--Form to pass userID to next page -->
 <form method="post"  action="../pages/assignToProject.php">
     
     <input type='hidden' name='userID' value='<?php echo $userID ?>'>

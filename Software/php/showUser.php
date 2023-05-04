@@ -30,9 +30,9 @@
             echo ("<br>");
 
 
-
+            //if admin show the list of users
             if ($_SESSION['admin'] == true) {
-                if (!$user['admin']) {
+                if (!$user['admin']) { //if user is not admin, show assign to Project and delete user buttons
                     require('../php/assignToProjectButton.php');
                     require('../php/deleteUserButton.php');
                 }

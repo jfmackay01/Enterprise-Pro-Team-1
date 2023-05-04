@@ -4,6 +4,7 @@ function conductAssignation($userID, $projectID, $role, $conn)
 {
     require_once("../db/dbConnect.php");
     $errors = array();
+   
     //check correct input form
     if (!is_int($userID) || !is_int($projectID) || !is_int($role)) {
         array_push($errors, "INCORRECT INPUT FORMAT");
@@ -11,7 +12,7 @@ function conductAssignation($userID, $projectID, $role, $conn)
         array_push($errors, "INCORRECT INPUT. WRONG ROLE VALUES");
     }
 
-    //check user and project exist
+    //check if user and project exist
     if (count($errors) == 0) {
         $query = "SELECT * FROM users WHERE userID = '$userID'";
 
@@ -23,7 +24,7 @@ function conductAssignation($userID, $projectID, $role, $conn)
 
         $query = "SELECT * FROM research_project WHERE projectID = '$projectID'";
 
-        $result = mysqli_query($conn, $query);
+        $result = mysqli_query($conn, $query); //perform query
         $check = mysqli_fetch_assoc($result);
         if (!$check) {
             array_push($errors, "Research project does not exist");
@@ -36,8 +37,6 @@ function conductAssignation($userID, $projectID, $role, $conn)
         $query = "SELECT * FROM project_allocations WHERE userID='$userID' AND projectID = '$projectID' LIMIT 1";
 
         $result = mysqli_query($conn, $query);
-        //$check = mysqli_fetch_assoc($result);
-        //echo ($check);
         if ($result->num_rows != 0) {
             array_push($errors, "User already assigned to project");
         }

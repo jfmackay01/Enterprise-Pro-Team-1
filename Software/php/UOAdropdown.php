@@ -32,7 +32,7 @@
         else{
             $uoa =0;
         }
-
+        // display retrieved data in dropdown list
         while ($row = $result->fetch_assoc()) {
             $id = $row['uoaID'];
             $name = $row['uoaTitle'];

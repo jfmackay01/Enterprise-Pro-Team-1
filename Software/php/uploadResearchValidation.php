@@ -55,7 +55,7 @@ function uploadResearchProject()
             array_push($errors, "Grants details required");
         }
 
-        if ($grants_radio == 1) {
+        if ($grants_radio == 1) { // if the grant has been given, show grant text fields
             if (strlen($grants_dateGiven) == 0) {
                 array_push($errors, "Grant date details required");
                 $noError = false;
@@ -80,10 +80,7 @@ function uploadResearchProject()
         if ($progress == 0) {
             array_push($errors, "Select progress state!");
         }
-       /* if (empty($summaryOfResearch)) {
-            array_push($errors, "Summary of Research is required");
-            echo "<p>Summary of Research is required</p>";
-        }*/
+      
         if (empty($researchOutput)) {
             array_push($errors, "Research Output is required");
         }

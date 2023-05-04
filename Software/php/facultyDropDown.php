@@ -30,7 +30,7 @@
         else{
             $dep =0;
         }
-        while ($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) { //show content
             $id = $row['departmentID'];
             $name = $row['departmentName'];
             echo ("<option value=" . $id);
