@@ -55,7 +55,7 @@ session_start();
                     
                         <div class="click-btn">
                             
-                            <input value="Submit" type="submit" class="btn" name="Submit"> 
+                            <input value="Submit" type="submit" name="Submit"> 
 
                         </div>
                         <?php
