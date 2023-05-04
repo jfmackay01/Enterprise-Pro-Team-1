@@ -3,7 +3,6 @@
 //valdation of registration form
 function validateRegisterForm() {
     //array to held errors
-    window.alert("HI!")
     let errors = []
     //get information from form
     let password = document.forms["register"]["password"].value;
