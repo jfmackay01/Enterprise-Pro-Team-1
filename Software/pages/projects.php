@@ -68,7 +68,7 @@ session_start();
                             <div class='col'>
                                 <h4> Upload Research Project </h4>
                             </div>
-                            <img src='https://i.imgur.com/jQKhmPH.png'>
+                            <img src='../img/pr.png'>
                             <div class='clickhere'>
                                 <a href='uploadresearch.php'>
                                     <h3>Click Here</h3>
@@ -80,9 +80,9 @@ session_start();
                     <div class='col-md-4'>
                         <div class='p-3 border bg-light'>
                             <div class='col'>
-                                <h4> Upload more files for selected Research Project </h4>
+                                <h4> Upload files for selected Research Project </h4>
                             </div>
-                            <img src='https://i.imgur.com/jQKhmPH.png'>
+                            <img src='../img/pr.png'>
                             <div class='clickhere'>
                                 <a href='uploadMoreResearchFiles.php'>
                                     <h3>Click Here</h3>
@@ -96,7 +96,7 @@ session_start();
                             <div class='col'>
                                 <h4> Upload more grants </h4>
                             </div>
-                            <img src='https://i.imgur.com/jQKhmPH.png'>
+                            <img src='../img/pr.png'>
                             <div class='clickhere'>
                                 <a href='uploadGrants.php'>
                                     <h3>Click Here</h3>

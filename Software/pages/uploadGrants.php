@@ -52,15 +52,17 @@ session_start();
                                     </div>
                                 </div> <br>
 
-                            </div>
-                            <!-- submission button -->
+                               
+                            </div> 
+                         <!-- submission button -->
+                    
+                        <div class="click-btn">
+                            
+                            <input value="Submit" type="submit" name="Submit"> 
 
-                            <div class="click-btn">
+                        </div>
+                        <?php
 
-                                <input value="Submit" type="submit" class="btn" name="Submit">
-
-                            </div>
-                            <?php
                             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 //continue if used method is post
 
