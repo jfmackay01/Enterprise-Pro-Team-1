@@ -3,5 +3,5 @@
     
     <input type='hidden' name='projectID' value='<?php echo $projectID ?>'>
 
-    <input value="View Project Details" type="submit" />
+    <input class="click-btn" value="View Project Details" type="submit" />
 </form>
