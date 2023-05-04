@@ -13,7 +13,7 @@
    
 
    <body>
-   <!----cookie prompt--->
+   <!----cookie prompt sourced from https://github.com/AOEpeople/cookie-notice  --->
       <script src="../js/cookie.notice.min.js"></script>  
 
       <div class="welcome">
