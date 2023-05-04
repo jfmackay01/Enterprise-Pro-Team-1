@@ -1,4 +1,4 @@
-
+<!--Form to change password -->
 <section class="container2">
        
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -11,7 +11,7 @@
                 
     </form>
     <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") { //if used method is post, conduct password change
             require '../php/conductChangePassword.php';
             conductChangePassword($_SESSION['userID'] ,$_POST['oldPassword'],$_POST['newPassword']);
         } 

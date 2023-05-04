@@ -10,14 +10,12 @@
     $query = "DELETE FROM project_allocations WHERE userID = $userID";
     
 
-    $result = mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query); //perform query
 
     if ($result){
         //delete user from users
 
         $query = "DELETE FROM users WHERE userID = $userID";
-
-        
 
         $result = mysqli_query($conn, $query);
 

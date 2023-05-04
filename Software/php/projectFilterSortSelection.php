@@ -1,3 +1,4 @@
+<!---form to hold the selection of filters and sorts for selected project in the list of research project -->
 <form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <label for="departmentFilter">Filter by department:</label>
     <select id="departmentFilter" name="departmentFilter">

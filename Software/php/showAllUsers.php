@@ -6,7 +6,7 @@ require '../php/showUser.php';
 // Default query if no filter
 $query = "SELECT userID FROM USERS";
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($_SERVER["REQUEST_METHOD"] == "GET") { //if used method is get, perform selection
     if (isset($_GET["userFilter"])) {
         $filter = $_GET["userFilter"];
 

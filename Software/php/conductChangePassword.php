@@ -17,7 +17,7 @@ function conductChangePassword($userID, $oldPass, $newPass)
     $result = mysqli_query($conn, $query);
     $check = mysqli_fetch_assoc($result);
     if ($check) {
-        $hash = $check['password'];
+        $hash = $check['password']; //hash the password
         if (password_verify($oldPass, $hash)) {
             echo 'Password verified';
             $options = ['cost' => 12];

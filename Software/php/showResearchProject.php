@@ -9,7 +9,7 @@
 function showResearchProject($projectID, $conn)
 {
 
-    //
+    //select all details corrensponding project ID from research_project and departments tables
     $query = "SELECT * FROM research_project NATURAL JOIN departments WHERE projectID = $projectID";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
@@ -27,7 +27,7 @@ function showResearchProject($projectID, $conn)
             echo nl2br("<td>" . $projectInvestigator . "</td>");
             echo nl2br("<td>" . $department . "</td>");
            
-            
+           //show view Impact and Project Details buttons in table 
             echo ("<td> ");
             require("../php/viewImpactButton.php"); 
             echo("</td><td>");

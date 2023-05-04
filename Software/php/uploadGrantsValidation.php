@@ -43,7 +43,7 @@ function uploadGrants() {
         if (count($errors) == 0) { //continue if there were no errors
              //insert into table research_grant given values
              $sql = "INSERT INTO research_grant(projectID, amount, dateGiven, givenBy) VALUES ('$project' ,'$grants_amount', '$grants_dateGiven', '$grants_givenBy')";
-             if(mysqli_query($conn, $sql)) {
+             if(mysqli_query($conn, $sql)) { //output successful message 
                  echo "<p>Grant added succesfully!</p>";
              } else {
                  echo "Adding grant's details failed!";
