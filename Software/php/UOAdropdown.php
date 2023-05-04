@@ -20,10 +20,27 @@
     //Add options to drop down menu for each uoa
     if ($result->num_rows > 0) {
 
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['projectID'])){
+                $uoa = $project['potentialUOA'];
+            }
+            else{
+                $uoa = 0;
+            }
+        }
+        else{
+            $uoa =0;
+        }
+
         while ($row = $result->fetch_assoc()) {
             $id = $row['uoaID'];
             $name = $row['uoaTitle'];
-            echo ("<option value=" . $id . ">". $name ."</option>");
+            echo ("<option value=" . $id);
+            if($id == $uoa){
+                echo " selected";
+            }
+            echo( ">". $name ."</option>");
         }
     }
 

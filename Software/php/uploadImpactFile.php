@@ -31,7 +31,7 @@ function uploadImpactFile($impID, $iFileName, $researchID, $conn) {
                 //error handling
                 if ($fileError === 0) {
                     //max file size 80 mb 
-                    if ($fileSize < 80000) {
+                    if ($fileSize < 80000000) {
 
                         //check if file with the same name exists in database
                         $sql = mysqli_query($conn, "SELECT * FROM impact_files WHERE iFileName = '$iFileName'");
