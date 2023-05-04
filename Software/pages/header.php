@@ -1,3 +1,4 @@
+<!-----link to CSS,Javascript, cookies prompt, bootstrap, javascript functions--->
 <link rel="stylesheet" type="text/css" href="../css/standard.css">
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,7 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src='../js/javascriptFunctions.js'></script>
 
-
+<!---general header for all pages---->
 <body>
 
    <div class="container-fluid">
@@ -20,6 +21,7 @@
                </h2>
             </div>
          </div>
+         <!----display user icon with link to log on/profile page + uni logo---->
          <div class="col-md-6">
             <div class="profile">
                 <img src="../img/uoblogo.png">

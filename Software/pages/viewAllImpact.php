@@ -2,7 +2,7 @@
 session_start();
 ?>
 <html>
-
+<!----general header--->
 <head>
 
     <?php

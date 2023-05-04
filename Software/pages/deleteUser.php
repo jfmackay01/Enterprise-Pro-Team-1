@@ -2,7 +2,7 @@
 session_start();
 ?>
 <html>
-
+<!----general header--->
 <head>
 
     <?php
@@ -12,6 +12,7 @@ session_start();
 </head>
 
 
+<!----page in order to delete user, using php ---->
 
 <body>
 <h1>Attempting to delete user. Do not refresh page.</h1>

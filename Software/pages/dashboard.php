@@ -6,6 +6,8 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
+<!---general header---->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,6 +28,8 @@ session_start();
                     <a class="back-btn" href="home.php" >Back</a>
             <h2>Dashboard</h2>
     </div>
+    <!-----embedded Tableau dashboard code from Tableau public to display dashboard ----->
+
     <div class='tableauPlaceholder' id='viz1682904260188' style='position: relative'>
         <noscript>
             <a href='#'>
@@ -49,7 +53,9 @@ session_start();
             <param name='filter' value='publish=yes' />
             <param name='showShareOptions' value='false'/>
         </object>
-    </div>                
+    </div>     
+
+    <!------ensure Tableau dashboard fits within the webpage----->
     <script type='text/javascript'>                    
         var divElement = document.getElementById('viz1682904260188');                    
         var vizElement = divElement.getElementsByTagName('object')[0];                    

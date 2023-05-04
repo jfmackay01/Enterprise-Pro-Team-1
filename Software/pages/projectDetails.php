@@ -2,7 +2,7 @@
 session_start();
 ?>
 <html>
-
+<!----general header--->
 <head>
 
    <?php
@@ -12,7 +12,7 @@ session_start();
 </head>
 
 
-
+<!----page to display all project details on a selected project--->
 <body>
 <div class="container4">
             <!-- back button -->

@@ -4,18 +4,11 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
-
+    
+<!----general header--->
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Users</title>
-
     <?php require 'header.php'; ?>
-
-    <!-- CSS styles -->
-    <link rel="stylesheet" href="../css/standard.css">
 </head>
 
 <body>
