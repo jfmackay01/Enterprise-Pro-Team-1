@@ -32,7 +32,7 @@ function uploadResearchFile($projectID, $rFileName, $conn) {
                 if ($fileError === 0) {
             
                     //max file size 80 mb 
-                    if ($fileSize < 80000) {
+                    if ($fileSize < 80000000) {
 
                         //check if file with the same name exists in database
                         $sql = mysqli_query($conn, "SELECT * FROM research_files WHERE rFileName = '$rFileName'");

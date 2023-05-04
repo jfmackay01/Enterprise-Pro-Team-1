@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2023 at 02:40 PM
+-- Generation Time: May 03, 2023 at 08:33 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -24,7 +24,7 @@ USE `impactevidenceplatform`;
 --
 -- Table structure for table `departments`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
 --
 
 DROP TABLE IF EXISTS `departments`;
@@ -52,7 +52,8 @@ INSERT INTO `departments` (`departmentID`, `departmentName`) VALUES
 --
 -- Table structure for table `impact_files`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
+-- Last update: May 03, 2023 at 06:14 PM
 --
 
 DROP TABLE IF EXISTS `impact_files`;
@@ -66,12 +67,26 @@ CREATE TABLE `impact_files` (
 -- RELATIONSHIPS FOR TABLE `impact_files`:
 --
 
+--
+-- Dumping data for table `impact_files`
+--
+
+INSERT INTO `impact_files` (`iFileID`, `impactID`, `iFileName`) VALUES
+(1, 1, 'ImpactFile3.txt'),
+(2, 2, 'ImpactFile2.txt'),
+(3, 3, 'ImpactFile1.txt'),
+(4, 4, 'ImpactImage1.jpg'),
+(5, 5, 'ImpactImage2.jpg'),
+(6, 6, 'ImpactImage3.jpg'),
+(7, 7, 'ImpactImage4.jpg');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `impact_record`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
+-- Last update: May 03, 2023 at 06:14 PM
 --
 
 DROP TABLE IF EXISTS `impact_record`;
@@ -97,14 +112,16 @@ INSERT INTO `impact_record` (`impactID`, `impactActivity`, `ImpactEvidence`, `re
 (2, 'Impact record 1.2', 'A lot', 1),
 (3, 'Impact Test 2.1', 'A brief description of evidence', 2),
 (4, 'Impact Test 2.2', 'Another brief description', 2),
-(5, 'Impact test 3', 'A brief description of the evidence', 3);
+(5, 'Impact test 3', 'A brief description of the evidence', 3),
+(6, 'Another impact', 'A picture ', 1),
+(7, 'AnotherTest', 'Another image ', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `progress`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
 --
 
 DROP TABLE IF EXISTS `progress`;
@@ -134,7 +151,7 @@ INSERT INTO `progress` (`progressID`, `progressStage`) VALUES
 --
 -- Table structure for table `project_allocations`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
 --
 
 DROP TABLE IF EXISTS `project_allocations`;
@@ -172,7 +189,8 @@ INSERT INTO `project_allocations` (`userID`, `projectID`, `role`) VALUES
 --
 -- Table structure for table `research_files`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
+-- Last update: May 03, 2023 at 05:53 PM
 --
 
 DROP TABLE IF EXISTS `research_files`;
@@ -188,12 +206,28 @@ CREATE TABLE `research_files` (
 --       `research_project` -> `projectID`
 --
 
+--
+-- Dumping data for table `research_files`
+--
+
+INSERT INTO `research_files` (`rFileID`, `projectID`, `rFileName`) VALUES
+(1, 1, 'testpdf1.pdf'),
+(2, 1, 'test1.txt'),
+(3, 1, 'testdoc1.docx'),
+(4, 2, 'testpdf2.pdf'),
+(5, 2, 'testjpeg.jpg'),
+(6, 3, 'testdoc3.docx'),
+(7, 3, 'testjpeg2.jpg'),
+(8, 3, 'testjpeg2811.jpg'),
+(9, 1, 'test2.txt'),
+(10, 1, 'test2985.txt');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `research_grant`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
 --
 
 DROP TABLE IF EXISTS `research_grant`;
@@ -222,7 +256,8 @@ INSERT INTO `research_grant` (`grantID`, `projectID`, `amount`, `dateGiven`, `gi
 --
 -- Table structure for table `research_project`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
+-- Last update: May 03, 2023 at 05:21 PM
 --
 
 DROP TABLE IF EXISTS `research_project`;
@@ -257,16 +292,16 @@ CREATE TABLE `research_project` (
 --
 
 INSERT INTO `research_project` (`projectID`, `projectTitle`, `departmentID`, `projectInvestigator`, `grantGiven`, `researchOutput`, `projectSummary`, `potentialUOA`, `impactProgress`, `notes`, `meetings`, `followup`, `underpinnedResearch`, `reach`, `significance`, `quality`, `impactAssessment`) VALUES
-(1, 'Test Project', 1, 'Bob Bobson', 1, NULL, 'A test Project', 36, 4, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Test Project 2', 2, 'Alice Anderson', 0, NULL, NULL, 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Test Project 3', 3, 'Charlie Chaplin', 0, NULL, 'A third test project', 36, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'Test Project', 1, 'Bob Bobson', 1, 'A brief description of the research output', 'A test Project', 11, 4, 'This should only be seen by the admin', 'Brief details on any meetings', 'Brief details on if any follow up', 'Brief details on any underpinned research', 'High', 'High', 'High', 'High'),
+(2, 'Test Project 2', 2, 'Alice Anderson', 0, 'An improvement in someway', 'A second test project', 1, 5, 'The notes should not be viewable to most people', 'Not many meetings', 'No followup needed', ' Based on something', 'Medium', 'Medium', 'High', 'Medium'),
+(3, 'Test Project 3', 3, 'Charlie Chaplin', 0, 'Gave an output', 'A third test project', 20, 5, 'Some notes from the admin', 'Some meetings', 'Some followup', 'Based on something', 'Low', 'High', 'Medium', 'High');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `uoa`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
 --
 
 DROP TABLE IF EXISTS `uoa`;
@@ -326,7 +361,7 @@ INSERT INTO `uoa` (`uoaID`, `uoaTitle`) VALUES
 --
 -- Table structure for table `users`
 --
--- Creation: Apr 28, 2023 at 12:40 PM
+-- Creation: May 03, 2023 at 05:04 PM
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -448,13 +483,13 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `impact_files`
 --
 ALTER TABLE `impact_files`
-  MODIFY `iFileID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iFileID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `impact_record`
 --
 ALTER TABLE `impact_record`
-  MODIFY `impactID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `impactID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `progress`
@@ -466,7 +501,7 @@ ALTER TABLE `progress`
 -- AUTO_INCREMENT for table `research_files`
 --
 ALTER TABLE `research_files`
-  MODIFY `rFileID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rFileID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `research_grant`

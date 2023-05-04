@@ -84,13 +84,13 @@ session_start();
                                 </div>
                                 <br>
                                 <br>
-                                <!-- summary of research text field -->
+                                <!-- summary of research text field 
                                 <div class="col-sm-12">
                                     <div class="inputBox">
                                         <div class="inputText" >Summary of Research</div>
                                         <textarea class="input" name ="summaryOfResearch"></textarea> 
                                     </div>
-                                </div>
+                                </div>-->
                                 
                                 <!-- research output text area -->
                                 <div class="col-sm-12">
@@ -187,6 +187,13 @@ session_start();
                                     <div class="inputBox">
                                     <div class="inputText">Quality</div>
                                         <input type="text" name="quality" class="input">
+                                    </div>
+                                </div>
+                                 <!-- Impact Assessment text field-->
+                                <div class="col-sm-12">
+                                    <div class="inputBox">
+                                    <div class="inputText">Impact Assessment</div>
+                                        <input type="text" name="impactAssessment" class="input">
                                     </div>
                                 </div>
                                 <br>
