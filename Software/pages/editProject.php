@@ -45,11 +45,8 @@ if (isset($_POST['conductEdit'])) {
                 $projectInvestigator = empty($project['projectInvestigator']) ? "N/A" : $project['projectInvestigator'];
                 $department = empty($project['departmentID']) ? "N/A" : $project['departmentID'];
                 $researchOutput = empty($project['researchOutput']) ? "N/A" : $project['researchOutput'];
-
                 $progress = empty($project['impactProgress']) ? "N/A" : $project['impactProgress'];
                 $uoa = empty($project['uoaID']) ? "N/A" : $project['uoaID'];
-
-
                 $meetings = empty($project['meetings']) ? "N/A" : $project['meetings'];
                 $followup = empty($project['followup']) ? "N/A" : $project['followup'];
                 $underpinnedResearch = empty($project['underpinnedResearch']) ? "N/A" : $project['underpinnedResearch'];
@@ -57,19 +54,19 @@ if (isset($_POST['conductEdit'])) {
                 $significance = empty($project['significance']) ? "N/A" : $project['significance'];
                 $quality = empty($project['quality']) ? "N/A" : $project['quality'];
                 $impactAssessment = empty($project['impactAssessment']) ? "N/A" : $project['impactAssessment'];
-
-
                 $notes = empty($project['notes']) ? "N/A" : $project['notes'];
             }
         }
     }
     ?>
+
     <!-- containter for form -->
     <div class="container4">
         <!-- back button -->
         <a class="back-btn" href="projects.php">Back</a>
         <h2>Upload Research Project</h2>
     </div>
+    
     <?php
     ?>
     <section>

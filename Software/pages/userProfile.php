@@ -2,7 +2,7 @@
 session_start();
 ?>
 <html>
-
+<!----general header--->
 <head>
 
     <?php
@@ -12,12 +12,12 @@ session_start();
 </head>
 
 <body>
-
+<!----shows the user which is logged in details--->
     <?php
     require '../db/dbconnect.php';
     require('../php/showUser.php');
     ?>
-
+ <!----form to change password + to log off--->
     <div class="container2">
         <div class="form">
             <?php

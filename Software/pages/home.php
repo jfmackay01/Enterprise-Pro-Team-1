@@ -3,7 +3,7 @@
    ?>
 <html>
    <head>
-      
+      <!----general header--->
       <?php
          require 'header.php';
          ?>
@@ -13,7 +13,7 @@
    
 
    <body>
-   
+   <!----cookie prompt--->
       <script src="../js/cookie.notice.min.js"></script>  
 
       <div class="welcome">
@@ -27,7 +27,7 @@
       <div class ="container">
          <div class="row gy-5">
 
-
+<!----checks log in session: if user display dashboard and all users---->
          <?php
             if (isset($_SESSION["logon"])) {
                if ($_SESSION["admin"] == true) {//if admin show admin links
@@ -62,6 +62,7 @@
          }
       }
    ?>
+<!---if not admin: displays research projects that they are assigned to---->
 
             <div class="col-lg-6 mx-auto">
                <div class="p-3 border bg-light">
@@ -76,9 +77,6 @@
                   </div>
                </div>
             </div>
-
-        
-
          </div>
       </div>
          

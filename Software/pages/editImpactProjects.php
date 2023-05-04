@@ -2,7 +2,7 @@
 session_start();
 ?>
 <html>
-
+<!----general header--->
 <head>
 
     <?php
@@ -14,7 +14,7 @@ session_start();
 </head>
 
 <body>
-    
+    <!-----checking request method, retrieving impact id value---->
 <?php 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -37,6 +37,8 @@ session_start();
     }
 
 ?>
+
+<!----form to edit impact---->
 <div class="container4">
         <!-- back button -->
         <a class="back-btn" href="viewImpactProjects.php" >Back</a>
