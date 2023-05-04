@@ -53,11 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['logon']) && $_SESSI
 
 
 <?php
+//if request is from the form and filled out assign the user to the project
 if ($_POST['conductUpdate'] == true){
-    if ($_POST['project'] != 0) {
+    if ($_POST['project'] != 0 && isset($_POST['role'])) {
 
         require_once("../php/conductAssignation.php");
         conductAssignation(intval($userID), intval($_POST['project']), intval($_POST['role']), $conn);
+    }
+    else{
+        echo "Please fill out all inputs to assign the user.";
     }
 }
 
